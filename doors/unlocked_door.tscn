@@ -18,10 +18,10 @@ script = ExtResource("1_8o3ph")
 opened_angle = 90.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, -0.500319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, -0.634378)
 material_override = SubResource("StandardMaterial3D_hhpkv")
 size = Vector3(0.2, 2.5, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, -0.0050354, -0.00268555, -0.500319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, -0.0050354, -0.00268555, -0.634378)
 shape = SubResource("BoxShape3D_moked")

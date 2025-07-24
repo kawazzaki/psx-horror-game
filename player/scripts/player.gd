@@ -12,9 +12,11 @@ extends CharacterBody3D
 @export var toggle_mouse_key: Key = KEY_V
 
 # == Nodes ==
-@onready var camera_head := $fpsCam
+@onready var camera_head := $head/fpsCam
+@onready var head = $head
 @onready var collision_shape := $CollisionShape3D
-@onready var raycast : RayCast3D = $fpsCam/RayCast3D
+@onready var aim_raycast : RayCast3D = $head/fpsCam/aimChecker
+@onready var crouch_raycast : RayCast3D = $head/crouchChecker
 
 
 var rot_y := 0.0
@@ -23,6 +25,7 @@ var is_mouse_captured := true
 var is_crouching := false
 var crouch_key_held := false
 var speed := walk_speed
+var breathing_period = 0;
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -49,6 +52,8 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	move_and_slide()
 	detect_doors()
+	breathing_effect(delta)
+	print(str(standing_possibility()))
 
 
 func _input(event):
@@ -66,16 +71,25 @@ func _handle_input():
 
 	if Input.is_key_pressed(crouch_key):
 		if not crouch_key_held:
-			is_crouching = !is_crouching
+			if(is_crouching == true):
+				if(standing_possibility()):
+					is_crouching = false
+				else:
+					print("cant stand")
+			else:
+				is_crouching = true
 			crouch_key_held = true
+			
 	else:
 		crouch_key_held = false
-
+	
 	if is_crouching:
 		speed = crouch_speed
-		collision_shape.scale.y = collision_heights.x
+		var tween = get_tree().create_tween()
+		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.x,collision_shape.scale.z),0.5)
 	else:
-		collision_shape.scale.y = collision_heights.y
+		var tween = get_tree().create_tween()
+		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.y,collision_shape.scale.z),0.5)
 
 	
 	var dir := Vector3.ZERO
@@ -100,12 +114,26 @@ func apply_gravity(delta):
 
 
 func detect_doors():
-	if(raycast.is_colliding()):
-		var collider  = raycast.get_collider();
+	if(aim_raycast.is_colliding()):
+		var collider  = aim_raycast.get_collider();
 		if(collider.is_in_group("door")):
 			return collider
 		else:
 			return null;
 	else:
 		return null;
-	pass
+
+
+
+func breathing_effect(delta):
+	breathing_period += delta
+
+	
+	var intensity = speed / 50         
+	var frequency = 1.0 + (speed / 10.0)   
+
+	var breathing_offset = sin(breathing_period * frequency) * intensity
+	head.position.y = 1 + breathing_offset
+
+func standing_possibility():
+	return !crouch_raycast.is_colliding();
