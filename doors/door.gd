@@ -14,7 +14,9 @@ func _ready() -> void:
 	self.rotation_degrees.y = closed_angle;
 
 
-func open_or_close_door():
+
+
+func interact():
 	isclosed = !isclosed;
 	if (isclosed == true):
 		var tween = get_tree().create_tween()

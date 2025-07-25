@@ -26,6 +26,7 @@ var is_crouching := false
 var crouch_key_held := false
 var speed := walk_speed
 var breathing_period = 0;
+var aim_collider ;
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -51,15 +52,18 @@ func _physics_process(delta):
 	_handle_input()
 	apply_gravity(delta)
 	move_and_slide()
-	detect_doors()
+	set_interact_object_outline()
 	breathing_effect(delta)
-	print(str(standing_possibility()))
+	
 
 
 func _input(event):
+	if(event is InputEventMouseMotion):
+		detect_interact_object()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if(detect_doors() != null):
-			detect_doors().open_or_close_door();
+		if(detect_interact_object() != null):
+			detect_interact_object().interact();
+
 
 
 func _handle_input():
@@ -113,15 +117,27 @@ func apply_gravity(delta):
 		velocity.y = 0.0
 
 
-func detect_doors():
+func detect_interact_object():
 	if(aim_raycast.is_colliding()):
-		var collider  = aim_raycast.get_collider();
-		if(collider.is_in_group("door")):
-			return collider
+		print(aim_raycast.get_collider())
+		if(aim_raycast.get_collider().is_in_group("interact")):
+			aim_collider = aim_raycast.get_collider();
+			
+			return aim_raycast.get_collider();
 		else:
-			return null;
+			return null
 	else:
 		return null;
+func set_interact_object_outline():
+	if(detect_interact_object() == null):
+		if(aim_collider == null):
+			pass
+		else:
+			aim_collider.get_node("outline").set_outline(false);
+			aim_collider = null;
+	else:
+		detect_interact_object().get_node("outline").set_outline(true)
+	pass
 
 
 
