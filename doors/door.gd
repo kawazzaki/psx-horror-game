@@ -17,13 +17,13 @@ func _ready() -> void:
 
 
 func interact():
-	isclosed = !isclosed;
-	if (isclosed == true):
+	if(!islocked):
+		isclosed = !isclosed;
 		var tween = get_tree().create_tween()
-		tween.tween_property(self,"rotation_degrees",Vector3(rotation_degrees.x,closed_angle,rotation_degrees.z),0.5)
-		pass
+		if (isclosed == true):
+			tween.tween_property(self,"rotation_degrees",Vector3(rotation_degrees.x,closed_angle,rotation_degrees.z),0.5)
+			pass
+		else:
+			tween.tween_property(self,"rotation_degrees",Vector3(rotation_degrees.x,opened_angle,rotation_degrees.z),0.5)
 	else:
-		var tween = get_tree().create_tween()
-		tween.tween_property(self,"rotation_degrees",Vector3(rotation_degrees.x,opened_angle,rotation_degrees.z),0.5)
-		pass
-	pass
+		print('this door is locked')

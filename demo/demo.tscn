@@ -72,5 +72,6 @@ size = Vector3(8.13867, 2.34326, 3.45068)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98213, 1.60613, -10.9735)
 shape = SubResource("ConcavePolygonShape3D_dar0o")
 
-[node name="item" parent="." instance=ExtResource("5_u10mr")]
+[node name="item" parent="." node_paths=PackedStringArray("my_doors") instance=ExtResource("5_u10mr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4532, 1.01443, -4.49641)
+my_doors = [NodePath("../unlocked_door"), NodePath("../unlocked_door2")]

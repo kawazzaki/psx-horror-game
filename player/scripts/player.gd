@@ -119,7 +119,7 @@ func apply_gravity(delta):
 
 func detect_interact_object():
 	if(aim_raycast.is_colliding()):
-		print(aim_raycast.get_collider())
+		#print(aim_raycast.get_collider())
 		if(aim_raycast.get_collider().is_in_group("interact")):
 			aim_collider = aim_raycast.get_collider();
 			
