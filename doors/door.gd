@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var islocked = false;
 @export var closed_angle : float;
 @export var opened_angle : float;
-
+@export var pickup_item : bool =false;
 
 
 var isclosed : bool = true;

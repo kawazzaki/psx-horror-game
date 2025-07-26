@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj2ifeiijhv7"]
+[gd_scene load_steps=4 format=3 uid="uid://bj2ifeiijhv7"]
 
 [ext_resource type="Script" uid="uid://do0okqu7ltdx6" path="res://player/scripts/player.gd" id="1_apn28"]
+[ext_resource type="Script" uid="uid://j11icwycmpk6" path="res://player/scripts/inventory.gd" id="2_t0cpu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_apn28"]
 
@@ -27,3 +28,6 @@ debug_shape_thickness = 5
 [node name="crouchChecker" type="RayCast3D" parent="head"]
 target_position = Vector3(0, 0.5, 0)
 collision_mask = 6
+
+[node name="inventory" type="Node3D" parent="."]
+script = ExtResource("2_t0cpu")

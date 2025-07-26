@@ -17,7 +17,7 @@ extends CharacterBody3D
 @onready var collision_shape := $CollisionShape3D
 @onready var aim_raycast : RayCast3D = $head/fpsCam/aimChecker
 @onready var crouch_raycast : RayCast3D = $head/crouchChecker
-
+@onready var inventory : Node3D = $inventory
 
 var rot_y := 0.0
 var rot_x := 0.0
@@ -61,9 +61,7 @@ func _input(event):
 	if(event is InputEventMouseMotion):
 		detect_interact_object()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if(detect_interact_object() != null):
-			detect_interact_object().interact();
-
+		swap_inventory_item()
 
 
 func _handle_input():
@@ -118,16 +116,13 @@ func apply_gravity(delta):
 
 
 func detect_interact_object():
-	if(aim_raycast.is_colliding()):
-		#print(aim_raycast.get_collider())
-		if(aim_raycast.get_collider().is_in_group("interact")):
-			aim_collider = aim_raycast.get_collider();
-			
-			return aim_raycast.get_collider();
-		else:
-			return null
-	else:
-		return null;
+	if aim_raycast.is_colliding():
+		var collider = aim_raycast.get_collider()
+		if collider != null and collider.is_in_group("interact"):
+			aim_collider = collider
+			return collider
+	return null
+	
 func set_interact_object_outline():
 	if(detect_interact_object() == null):
 		if(aim_collider == null):
@@ -153,3 +148,20 @@ func breathing_effect(delta):
 
 func standing_possibility():
 	return !crouch_raycast.is_colliding();
+
+func swap_inventory_item():
+	if(detect_interact_object() != null):
+		detect_interact_object().interact();
+		if(detect_interact_object().pickup_item == true):
+			var object : StaticBody3D = detect_interact_object();
+			if(inventory.item_in_inventory != ""):
+				var item_data = inventory.get_item_by_name()
+				var item_scene = item_data.get("scene", null)
+				if item_scene != null:
+					var item_instance = item_scene.instantiate()
+					item_instance.global_position = self.global_position 
+					get_tree().current_scene.add_child(item_instance)
+					item_instance.item_name = inventory.item_in_inventory;
+			inventory.item_in_inventory = object.item_name;
+			object.queue_free();
+	pass

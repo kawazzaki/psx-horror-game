@@ -1,11 +1,9 @@
 extends StaticBody3D
 
-@export var my_doors : Array[StaticBody3D];
+@export var item_name : String;
+
+
 
 func interact():
-	if(my_doors != []):
-		for door in my_doors:
-			door.islocked = false
-			print(door)
-
+	print(self.name)
 	pass
