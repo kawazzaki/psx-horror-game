@@ -2,24 +2,26 @@ extends Node3D
 
 
 
-var item_in_inventory = "";
+var items_in_inventory : Array[String] = ["","",""];
 
 
-func _process(delta: float) -> void:
-	print(item_in_inventory)
 
 
+func check_if_inventory_full():
+	for i in items_in_inventory.size():
+		if(items_in_inventory[i]== ""):
+			return i;
+	return -1;
+	pass
 
 #items database
 var items = {
-	"door key2" : {
+	"key1" : {
 		"scene": preload("res://items/key/key.tscn"),
+		"icon": preload("res://demo/PNG/Dark/texture_01.png")
 	},
-	"door key1" : {
+	"key2" : {
 		"scene": preload("res://items/key/key.tscn"),
+		"icon": preload("res://demo/PNG/Green/texture_01.png")
 	},
 }
-
-
-func get_item_by_name():
-	return items.get(item_in_inventory,{})

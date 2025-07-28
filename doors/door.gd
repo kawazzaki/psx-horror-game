@@ -6,15 +6,29 @@ extends StaticBody3D
 @export var closed_angle : float;
 @export var opened_angle : float;
 @export var pickup_item : bool =false;
+@export var key_name : String;
+
+
+@onready var player_inventory : Node3D = get_tree().root.get_child(0).get_node("player").get_node("inventory")
+
+
 
 
 var isclosed : bool = true;
 
 func _ready() -> void:
+
 	self.rotation_degrees.y = closed_angle;
+	
 
-
-
+func _process(delta: float) -> void:
+	islocked = !check_player_if_has_the_key()
+	
+func check_player_if_has_the_key():
+	for slot in player_inventory.items_in_inventory:
+		if(slot == key_name):
+			return true;
+	return false
 
 func interact():
 	if(!islocked):

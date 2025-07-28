@@ -150,18 +150,28 @@ func standing_possibility():
 	return !crouch_raycast.is_colliding();
 
 func swap_inventory_item():
-	if(detect_interact_object() != null):
+	if(detect_interact_object() != null && is_mouse_captured):
 		detect_interact_object().interact();
-		if(detect_interact_object().pickup_item == true):
-			var object : StaticBody3D = detect_interact_object();
-			if(inventory.item_in_inventory != ""):
-				var item_data = inventory.get_item_by_name()
-				var item_scene = item_data.get("scene", null)
-				if item_scene != null:
-					var item_instance = item_scene.instantiate()
-					item_instance.global_position = self.global_position 
-					get_tree().current_scene.add_child(item_instance)
-					item_instance.item_name = inventory.item_in_inventory;
-			inventory.item_in_inventory = object.item_name;
-			object.queue_free();
-	pass
+		var slot_index = inventory.check_if_inventory_full();
+		if(slot_index == -1):
+			print("inventory is full")
+		else:
+			if(detect_interact_object().pickup_item == true):
+				inventory.items_in_inventory[slot_index] = detect_interact_object().item_name;
+
+
+#
+#if(detect_interact_object() != null):
+#		detect_interact_object().interact();
+#		if(detect_interact_object().pickup_item == true):
+#			var object  = detect_interact_object();
+#			if(inventory.item_in_inventory != ""):
+#				var item_data = inventory.get_item_by_name()
+#				var item_scene = item_data.get("scene", null)
+#				if item_scene != null:
+#					var item_instance = item_scene.instantiate()
+#					item_instance.global_position = self.global_position 
+#					get_tree().current_scene.add_child(item_instance)
+#					item_instance.item_name = inventory.item_in_inventory;
+#			inventory.item_in_inventory = object.item_name;
+#			object.queue_free();

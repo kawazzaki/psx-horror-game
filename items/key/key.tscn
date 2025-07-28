@@ -32,14 +32,13 @@ _surfaces = [{
 "vertex_data": PackedByteArray("7rEDv+6xA7/usQM/7rEDv+6xA7/usQO/7rEDv+6xAz/usQO/7rEDP+6xA7/usQO/7rEDv+6xA7/usQO/7rEDv+6xA7/usQM/7rEDv+6xAz/usQO/7rEDv+6xA7/usQO/7rEDP+6xA7/usQO/7rEDv+6xAz/usQO/7rEDv+6xAz/usQM/7rEDv+6xA7/usQM/7rEDv+6xA7/usQM/7rEDv+6xAz/usQM/7rEDP+6xAz/usQM/7rEDP+6xAz/usQM/7rEDv+6xAz/usQM/7rEDv+6xAz/usQO/7rEDv+6xA7/usQM/7rEDP+6xA7/usQM/7rEDP+6xA7/usQO/7rEDP+6xAz/usQM/7rEDP+6xA7/usQM/7rEDv+6xA7/usQM/7rEDP+6xA7/usQO/7rEDP+6xA7/usQM/7rEDP+6xAz/usQM/7rEDP+6xA7/usQO/7rEDP+6xAz/usQO/7rEDv+6xAz/usQO/7rEDv+6xAz/usQO/7rEDP+6xAz/usQO/7rEDP+6xAz/usQM/7rEDP+6xAz/usQM/7rEDP+6xAz/usQO/7rEDP+6xA7/usQO/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8/AID/////AAAAgP////8AAACA/////wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z//////AAD/P/////8AAP8/AID/////AAAAgP////8AAACA/////wAA//8AgP9//n///wCA/3/+f///AID/f/5/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gs26w"]
-data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bpggf"]
 
-[node name="key" type="StaticBody3D" groups=["interact"]]
-collision_layer = 2
-collision_mask = 2
+[node name="key" type="RigidBody3D" groups=["interact"]]
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.2
 script = ExtResource("1_bpggf")
-item_name = "door key"
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ayiq1")
@@ -50,11 +49,8 @@ material_override = ExtResource("3_ajyla")
 mesh = SubResource("ArrayMesh_1qt76")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConcavePolygonShape3D_gs26w")
+shape = SubResource("BoxShape3D_bpggf")
 
 [node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("4_3yeun")
 outline_mesh = NodePath("../CSGBakedMeshInstance3D/MeshInstance3D")
-
-[node name="ground_checker" type="RayCast3D" parent="."]
-target_position = Vector3(0, -7.695, 0)

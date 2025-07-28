@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1eiqefdrhyy"]
+
+[ext_resource type="Script" uid="uid://dej6jpqe1fucu" path="res://ui/inventory/slot.gd" id="1_m57sd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ob5hu"]
+
+[node name="slot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 125.0
+offset_bottom = 125.0
+script = ExtResource("1_m57sd")
+
+[node name="item_name" type="Label" parent="."]
+layout_mode = 1
+offset_right = 87.0
+offset_bottom = 23.0
+text = "item_name"
+
+[node name="texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ob5hu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "enequip"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
