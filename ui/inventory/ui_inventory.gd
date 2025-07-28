@@ -20,7 +20,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	handle_inventory_toggle();
-	render_inventory();
+	if(is_appared):
+		render_inventory();
 
 func _on_button_pressed() -> void:
 	is_appared = false

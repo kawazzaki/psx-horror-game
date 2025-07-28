@@ -175,3 +175,14 @@ func swap_inventory_item():
 #					item_instance.item_name = inventory.item_in_inventory;
 #			inventory.item_in_inventory = object.item_name;
 #			object.queue_free();
+
+
+func drop_item(item_name):
+	var item_to_drop = inventory.items.get(item_name,null);
+	if(item_to_drop != null):
+		var item_instance = item_to_drop["scene"].instantiate();
+		item_instance.global_position = self.global_position + Vector3(1,0,0); 
+		get_tree().current_scene.add_child(item_instance)
+		item_instance.item_name = item_name;
+	
+	pass

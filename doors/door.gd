@@ -14,7 +14,10 @@ extends StaticBody3D
 
 
 
+
+var opende_for_first_time = false;
 var isclosed : bool = true;
+
 
 func _ready() -> void:
 
@@ -22,11 +25,17 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	islocked = !check_player_if_has_the_key()
+	
+	if(!isclosed):
+		islocked = false;
+	else:
+		if(opende_for_first_time == false):
+			islocked = !check_player_if_has_the_key()
 	
 func check_player_if_has_the_key():
 	for slot in player_inventory.items_in_inventory:
 		if(slot == key_name):
+			opende_for_first_time = true
 			return true;
 	return false
 

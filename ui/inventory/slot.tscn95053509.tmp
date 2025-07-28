@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg1eiqefdrhyy"]
 
 [ext_resource type="Script" uid="uid://dej6jpqe1fucu" path="res://ui/inventory/slot.gd" id="1_m57sd"]
-[ext_resource type="Texture2D" uid="uid://1fgky8g5rxkm" path="res://icon.svg" id="2_fl40y"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ob5hu"]
 
 [node name="slot" type="Control"]
 layout_mode = 3
@@ -29,7 +30,7 @@ offset_right = 37.5
 offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fl40y")
+texture = SubResource("CanvasTexture_ob5hu")
 expand_mode = 1
 stretch_mode = 4
 
