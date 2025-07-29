@@ -52,14 +52,12 @@ func _physics_process(delta):
 	_handle_input()
 	apply_gravity(delta)
 	move_and_slide()
-	set_interact_object_outline()
 	breathing_effect(delta)
-	
+	detect_interact_object()
 
 
 func _input(event):
-	if(event is InputEventMouseMotion):
-		detect_interact_object()
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		swap_inventory_item()
 
@@ -121,20 +119,10 @@ func detect_interact_object():
 		if collider != null and collider.is_in_group("interact"):
 			aim_collider = collider
 			return collider
+		aim_collider = null
+	aim_collider = null
 	return null
 	
-func set_interact_object_outline():
-	if(detect_interact_object() == null):
-		if(aim_collider == null):
-			pass
-		else:
-			aim_collider.get_node("outline").set_outline(false);
-			aim_collider = null;
-	else:
-		detect_interact_object().get_node("outline").set_outline(true)
-	pass
-
-
 
 func breathing_effect(delta):
 	breathing_period += delta

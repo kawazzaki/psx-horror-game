@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=4 uid="uid://ejnv5gv02tb1"]
+
+[ext_resource type="PackedScene" uid="uid://dqmujp0ropoup" path="res://envirenement/lobby/model/lobby.glb" id="1_7xxxi"]
+[ext_resource type="PackedScene" uid="uid://beemfk0g21n2c" path="res://envirenement/lobby/model/cable.glb" id="2_61xba"]
+[ext_resource type="PackedScene" uid="uid://cemdmkqw7t5kk" path="res://props/machine/model/machine.glb" id="3_thjb7"]
+[ext_resource type="PackedScene" uid="uid://beogl7q0gdiq3" path="res://props/ceiling fan/ceiling_fan.tscn" id="4_hsdnv"]
+
+[sub_resource type="Gradient" id="Gradient_7xxxi"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.843137, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_61xba"]
+gradient = SubResource("Gradient_7xxxi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xxxi"]
+transparency = 4
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.00784314)
+albedo_texture = SubResource("GradientTexture1D_61xba")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_61xba"]
+_surfaces = [{
+"aabb": AABB(-2.01099, -10.5398, -2.08664, 4.02197, 21.0796, 4.17328),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("ALQAwACjKMGAiwVAALQAwACjKMGAiwXAALQAwACjKEGAiwXAALQAQACjKMGAiwXAALQAwACjKMGAiwXAALQAwACjKMGAiwVAALQAwACjKEGAiwXAALQAwACjKMGAiwXAALQAQACjKMGAiwXAALQAwACjKEGAiwXAALQAwACjKEGAiwVAALQAwACjKMGAiwVAALQAwACjKMGAiwVAALQAwACjKEGAiwVAALQAQACjKEGAiwVAALQAQACjKEGAiwVAALQAwACjKEGAiwVAALQAwACjKEGAiwXAALQAwACjKMGAiwVAALQAQACjKMGAiwVAALQAQACjKMGAiwXAALQAQACjKEGAiwVAALQAQACjKMGAiwVAALQAwACjKMGAiwVAALQAQACjKMGAiwXAALQAQACjKMGAiwVAALQAQACjKEGAiwVAALQAQACjKMGAiwXAALQAQACjKEGAiwXAALQAwACjKEGAiwXAALQAwACjKEGAiwXAALQAQACjKEGAiwXAALQAQACjKEGAiwVAALQAQACjKEGAiwVAALQAQACjKEGAiwXAALQAQACjKMGAiwXAAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thjb7"]
+size = Vector3(6.51807, 7.67444, 4.90625)
+
+[node name="lobby" instance=ExtResource("1_7xxxi")]
+
+[node name="light" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(0.454239, -0.89088, 0, 0.89088, 0.454239, 0, 0, 0, 1, -16.4611, 2.52706, 15.803)
+layers = 512
+material_override = SubResource("StandardMaterial3D_7xxxi")
+mesh = SubResource("ArrayMesh_61xba")
+
+[node name="light3" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(-0.049759, 0.0975901, -0.993982, 0.89088, 0.454239, 0, 0.451506, -0.885518, -0.109544, -3.85774, 2.52706, -17.4199)
+layers = 512
+material_override = SubResource("StandardMaterial3D_7xxxi")
+mesh = SubResource("ArrayMesh_61xba")
+
+[node name="cable" parent="." index="7" instance=ExtResource("2_61xba")]
+transform = Transform3D(2.85, 0, 0, 0, 2.85, 0, 0, 0, 2.85, 0, 0.240328, 16.8662)
+
+[node name="machine" type="StaticBody3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32374, 1.57835, -23.7134)
+
+[node name="machine2" parent="machine" index="0" instance=ExtResource("3_thjb7")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="machine" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61841, 2.27911, 0.816406)
+shape = SubResource("BoxShape3D_thjb7")
+
+[node name="ceiling fan" parent="." index="9" instance=ExtResource("4_hsdnv")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 11.7461, 0)

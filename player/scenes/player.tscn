@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://do0okqu7ltdx6" path="res://player/scripts/player.gd" id="1_apn28"]
 [ext_resource type="Script" uid="uid://j11icwycmpk6" path="res://player/scripts/inventory.gd" id="2_t0cpu"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_apn28"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0cpu"]
+size = Vector3(1, 2, 1)
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_apn28")
 collision_heights = Vector2(0.2, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
-shape = SubResource("CylinderShape3D_apn28")
+shape = SubResource("BoxShape3D_t0cpu")
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
