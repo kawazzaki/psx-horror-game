@@ -11,6 +11,8 @@ extends CharacterBody3D
 @export var crouch_key: Key = KEY_C
 @export var toggle_mouse_key: Key = KEY_V
 
+@export var walk_sound_fx : AudioStream;
+
 # == Nodes ==
 @onready var camera_head := $head/fpsCam
 @onready var head = $head
@@ -18,6 +20,8 @@ extends CharacterBody3D
 @onready var aim_raycast : RayCast3D = $head/fpsCam/aimChecker
 @onready var crouch_raycast : RayCast3D = $head/crouchChecker
 @onready var inventory : Node3D = $inventory
+@onready var sound_output : AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 
 var rot_y := 0.0
 var rot_x := 0.0
@@ -54,7 +58,7 @@ func _physics_process(delta):
 	move_and_slide()
 	breathing_effect(delta)
 	detect_interact_object()
-
+	update_footstep_timer()
 
 func _input(event):
 
@@ -174,3 +178,15 @@ func drop_item(item_name):
 		item_instance.item_name = item_name;
 	
 	pass
+
+func update_footstep_timer():
+	if(speed == run_speed):
+		$Timer.wait_time = 0.28
+	elif(speed == walk_speed):
+		$Timer.wait_time = 0.65
+
+func _on_timer_timeout() -> void:
+	if(velocity != Vector3.ZERO && is_crouching == false):
+		sound_output.stream = walk_sound_fx
+		sound_output.play()
+	pass # Replace with function body.

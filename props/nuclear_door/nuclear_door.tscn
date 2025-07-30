@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyrb2k6vibjfp"]
+
+[ext_resource type="PackedScene" uid="uid://carc152u5nvxg" path="res://props/nuclear_door/model/nuclear_door.glb" id="1_568a2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjbge"]
+size = Vector3(2.0437, 4.04626, 0.280212)
+
+[node name="nuclear_door" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00378418, 0.00506592, -0.0103455)
+shape = SubResource("BoxShape3D_jjbge")
+
+[node name="nuclear_door" parent="StaticBody3D" instance=ExtResource("1_568a2")]

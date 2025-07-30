@@ -1,27 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=9 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
 [ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
 [ext_resource type="PackedScene" uid="uid://ejnv5gv02tb1" path="res://envirenement/lobby/lobby.tscn" id="3_dar0o"]
 [ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="4_j5lb4"]
 [ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="5_u10mr"]
+[ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="6_onu7k"]
+[ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="7_s1s6j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onu7k"]
 shader = ExtResource("5_u10mr")
-shader_parameter/brightnessMult = 1.6
+shader_parameter/brightnessMult = 1.0
 shader_parameter/wiggleMult = 0.0013
 shader_parameter/chromaticAberrationOffset = 0.0
 
 [node name="demo" type="Node3D"]
 
 [node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
-visible = false
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -1.735, 7.72822, -8.42838)
-light_bake_mode = 0
-directional_shadow_mode = 0
-sky_mode = 2
 
 [node name="player" parent="." instance=ExtResource("1_d6po2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2657, 2.74012, -6.24905)
@@ -31,9 +26,9 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -5.80933)
 
 [node name="desk" parent="." instance=ExtResource("4_j5lb4")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, -13.9059)
+items_in_drawers = Array[String](["", "", "", "", "", "", ""])
 
 [node name="cfr" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_onu7k")
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,3 +37,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="nuclear_door" parent="." instance=ExtResource("6_onu7k")]
+transform = Transform3D(-4.87857e-08, 0, 0.530888, 0, 0.797287, 0, -1.11609, 0, -2.32058e-08, 8.78653, 1.54915, -5.57585)
+
+[node name="storage1" parent="." instance=ExtResource("7_s1s6j")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -2.98642, 0.820665, 1.07975)
+items_in_drawers = Array[String](["key1"])
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3126, -4.13475)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.84809, 2.3126, -0.195098)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.84809, 2.3126, -9.81502)

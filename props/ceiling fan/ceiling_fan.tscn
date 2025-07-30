@@ -1,8 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://beogl7q0gdiq3"]
+[gd_scene load_steps=11 format=3 uid="uid://beogl7q0gdiq3"]
 
 [ext_resource type="PackedScene" uid="uid://b32pkjrswtisu" path="res://props/ceiling fan/model/ceiling fan.gltf.glb" id="1_wov4l"]
+[ext_resource type="Texture2D" uid="uid://dmxlbg87clcwb" path="res://props/ceiling fan/model/Ceiling_Fan_diffuse.png" id="2_6gyg4"]
+[ext_resource type="AudioStream" uid="uid://bddhlkaagik1r" path="res://sounds/celling_fun.mp3" id="2_isnvd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xx6jv"]
+albedo_texture = ExtResource("2_6gyg4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12lkw"]
+albedo_texture = ExtResource("2_6gyg4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wov4l"]
+
+[sub_resource type="Animation" id="Animation_6gyg4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ceiling fan_gltf/ceiling fan/50c7c1f93d194cbca237d0255003467c_fbx/Object_2/RootNode/Ceiling_Fan_Blades:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wov4l"]
 resource_name = "idle"
@@ -23,21 +46,6 @@ tracks/0/keys = {
 "values": [Vector3(-1.5708, 0, 0), Vector3(-1.5708, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6gyg4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ceiling fan_gltf/ceiling fan/50c7c1f93d194cbca237d0255003467c_fbx/Object_2/RootNode/Ceiling_Fan_Blades:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xx6jv"]
 _data = {
 &"RESET": SubResource("Animation_6gyg4"),
@@ -49,8 +57,14 @@ _data = {
 
 [node name="ceiling fan_gltf" parent="." instance=ExtResource("1_wov4l")]
 
+[node name="Ceiling_Fan_Ceiling_Fan_0" parent="ceiling fan_gltf/ceiling fan/50c7c1f93d194cbca237d0255003467c_fbx/Object_2/RootNode/Ceiling_Fan" index="0"]
+material_override = SubResource("StandardMaterial3D_xx6jv")
+
 [node name="Ceiling_Fan_Blades" parent="ceiling fan_gltf/ceiling fan/50c7c1f93d194cbca237d0255003467c_fbx/Object_2/RootNode" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30.461, 0)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 30.461, 0)
+
+[node name="Ceiling_Fan_Blades_Ceiling_Fan_0" parent="ceiling fan_gltf/ceiling fan/50c7c1f93d194cbca237d0255003467c_fbx/Object_2/RootNode/Ceiling_Fan_Blades" index="0"]
+material_override = SubResource("StandardMaterial3D_12lkw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_wov4l")
@@ -60,5 +74,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_xx6jv")
 }
 autoplay = "spin"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_isnvd")
+unit_size = 3.0
+autoplay = true
 
 [editable path="ceiling fan_gltf"]
