@@ -5,7 +5,9 @@ extends Node
 
 var items_in_inventory : Array[String] = ["","",""];
 
-@onready var inventory = self.get_tree().root.get_child(1).get_node("player").get_node("inventory")
+@onready var head= self.get_tree().root.get_child(1).get_node("player").get_node("head/fpsCam")
+
+
 
 
 var items = {}
@@ -17,6 +19,7 @@ func _ready():
 		var json = JSON.parse_string(content)
 		if typeof(json) == TYPE_DICTIONARY:
 			items = json
+	load_papers()
 
 
 func has_item(item_name: String) -> bool:
@@ -47,3 +50,26 @@ func toggle_mouse():
 	Input.set_mouse_mode(
 		Input.MOUSE_MODE_CAPTURED if Global.is_mouse_captured else Input.MOUSE_MODE_VISIBLE
 	)
+	
+#paper_read_system
+var papers_data = {}
+
+
+func load_papers():
+	var file = FileAccess.open("res://others/papers.json", FileAccess.READ)
+	var json_string = file.get_as_text()
+	var json = JSON.parse_string(json_string)
+	if json != null:
+		papers_data = json
+	else:
+		push_error("Failed to parse papers.json")
+
+func show_paper(paper_id: String):
+	if papers_data.has(paper_id):
+		var paper = papers_data[paper_id]
+		#$TitleLabel.text = paper["title"]
+		#$ContentLabel.text = paper["content"]
+		return paper["content"]
+	else:
+		push_error("Paper not found: " + paper_id)
+		return "nothing"

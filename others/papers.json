@@ -1,0 +1,10 @@
+{
+  "paper_1": {
+    "title": "Welcome Note",
+    "content": "Hello traveler,\nWelcome to our lands.\nPlease read carefully."
+  },
+  "paper_2": {
+    "title": "Warning",
+    "content": "Do not enter the forest after dark.\nStrange things happen there."
+  }
+}

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://135unmc21u4u"]
+
+[ext_resource type="Script" uid="uid://dwcj1qy36chgk" path="res://ui/read/read.gd" id="1_mcyak"]
+
+[node name="read" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mcyak")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 61.0
+offset_right = 237.0
+offset_bottom = 609.0
+grow_horizontal = 2
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 537.0
+offset_right = 879.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 28
+text = "exit"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
