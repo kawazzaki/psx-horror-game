@@ -33,11 +33,12 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bpggf"]
+size = Vector3(1.5, 1.5, 1.5)
 
 [node name="key" type="RigidBody3D" groups=["interact"]]
 collision_layer = 2
-collision_mask = 2
-gravity_scale = 0.2
+collision_mask = 6
+gravity_scale = 0.1
 script = ExtResource("1_bpggf")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]

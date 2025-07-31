@@ -1,0 +1,10 @@
+{
+  "key1": {
+    "scene_path": "res://items/key/key.tscn",
+    "icon_path": "res://demo/PNG/Dark/texture_01.png"
+  },
+  "key2": {
+    "scene_path": "res://items/key/key.tscn",
+    "icon_path": "res://demo/PNG/Green/texture_01.png"
+  }
+}

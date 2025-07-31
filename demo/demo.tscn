@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=10 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
+[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
 [ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
 [ext_resource type="PackedScene" uid="uid://ejnv5gv02tb1" path="res://envirenement/lobby/lobby.tscn" id="3_dar0o"]
 [ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="4_j5lb4"]
@@ -15,6 +16,7 @@ shader_parameter/wiggleMult = 0.0013
 shader_parameter/chromaticAberrationOffset = 0.0
 
 [node name="demo" type="Node3D"]
+script = ExtResource("1_onvmd")
 
 [node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
 
@@ -26,7 +28,7 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -5.80933)
 
 [node name="desk" parent="." instance=ExtResource("4_j5lb4")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, -13.9059)
-items_in_drawers = Array[String](["", "", "", "", "", "", ""])
+items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "", "", ""])
 
 [node name="cfr" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_onu7k")
@@ -43,7 +45,7 @@ transform = Transform3D(-4.87857e-08, 0, 0.530888, 0, 0.797287, 0, -1.11609, 0, 
 
 [node name="storage1" parent="." instance=ExtResource("7_s1s6j")]
 transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -2.98642, 0.820665, 1.07975)
-items_in_drawers = Array[String](["key1"])
+items_in_drawers = Array[String](["key2"])
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3126, -4.13475)

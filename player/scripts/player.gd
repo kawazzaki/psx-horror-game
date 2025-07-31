@@ -19,24 +19,25 @@ extends CharacterBody3D
 @onready var collision_shape := $CollisionShape3D
 @onready var aim_raycast : RayCast3D = $head/fpsCam/aimChecker
 @onready var crouch_raycast : RayCast3D = $head/crouchChecker
-@onready var inventory : Node3D = $inventory
+#@onready var inventory : Node3D = $inventory
 @onready var sound_output : AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 
 var rot_y := 0.0
 var rot_x := 0.0
-var is_mouse_captured := true
+
 var is_crouching := false
 var crouch_key_held := false
 var speed := walk_speed
 var breathing_period = 0;
 var aim_collider ;
+var slot_index ;
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion and is_mouse_captured:
+	if event is InputEventMouseMotion and Global.is_mouse_captured:
 		rot_y -= event.relative.x * mouse_sensitivity
 		rot_x -= event.relative.y * mouse_sensitivity
 		rot_x = clamp(rot_x, -90, 90)
@@ -44,13 +45,8 @@ func _unhandled_input(event):
 		camera_head.rotation_degrees.x = rot_x
 
 	elif event is InputEventKey and event.pressed and event.keycode == toggle_mouse_key:
-		_toggle_mouse()
+		Global.toggle_mouse()
 
-func _toggle_mouse():
-	is_mouse_captured = !is_mouse_captured
-	Input.set_mouse_mode(
-		Input.MOUSE_MODE_CAPTURED if is_mouse_captured else Input.MOUSE_MODE_VISIBLE
-	)
 
 func _physics_process(delta):
 	_handle_input()
@@ -59,6 +55,9 @@ func _physics_process(delta):
 	breathing_effect(delta)
 	detect_interact_object()
 	update_footstep_timer()
+	
+	slot_index = Global.check_if_inventory_full();
+	print(Global.items_in_inventory , slot_index)
 
 func _input(event):
 
@@ -142,17 +141,18 @@ func standing_possibility():
 	return !crouch_raycast.is_colliding();
 
 func swap_inventory_item():
-	if(detect_interact_object() != null && is_mouse_captured):
-		detect_interact_object().interact();
-		var slot_index = inventory.check_if_inventory_full();
+	if(aim_collider != null && Global.is_mouse_captured == true):
+		if(aim_collider.pickup_item == false):
+			aim_collider.interact();
 		if(slot_index == -1):
 			print("inventory is full")
 		else:
-			if(detect_interact_object().pickup_item == true):
-				inventory.items_in_inventory[slot_index] = detect_interact_object().item_name;
+			if(aim_collider.pickup_item == true):
+				aim_collider.interact();
+				Global.items_in_inventory[slot_index] = aim_collider.item_name;
 
 
-#
+#old system :/
 #if(detect_interact_object() != null):
 #		detect_interact_object().interact();
 #		if(detect_interact_object().pickup_item == true):
@@ -170,14 +170,17 @@ func swap_inventory_item():
 
 
 func drop_item(item_name):
-	var item_to_drop = inventory.items.get(item_name,null);
-	if(item_to_drop != null):
-		var item_instance = item_to_drop["scene"].instantiate();
-		item_instance.global_position = self.global_position + Vector3(1,0,0); 
-		get_tree().current_scene.add_child(item_instance)
-		item_instance.item_name = item_name;
-	
-	pass
+	if Global.has_item(item_name):
+		var item_scene = Global.get_item_scene(item_name)
+		if item_scene != null:
+			var item_instance = item_scene.instantiate()
+			item_instance.global_position = self.global_position + Vector3(1, 0, 0)
+			get_tree().current_scene.add_child(item_instance)
+			item_instance.item_name = item_name
+		else:
+			print("Failed to load scene for item:", item_name)
+	else:
+		print("Item not found in database:", item_name)
 
 func update_footstep_timer():
 	if(speed == run_speed):

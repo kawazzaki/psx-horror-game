@@ -9,7 +9,6 @@ var opened_angle : float;
 @export var key_name : String;
 @export var variation_angle : float;
 
-@onready var player_inventory : Node3D = get_tree().root.get_child(0).get_node("player").get_node("inventory")
 
 
 
@@ -25,7 +24,7 @@ func _ready() -> void:
 	
 
 func check_player_if_has_the_key():
-	for slot in player_inventory.items_in_inventory:
+	for slot in Global.inventory.items_in_inventory:
 		if(slot == key_name):
 			opende_for_first_time = true
 			return true;
