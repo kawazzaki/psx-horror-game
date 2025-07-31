@@ -1,6 +1,7 @@
 extends StaticBody3D
 
 
+@export var object_name : String;
 
 @export var islocked = false;
 var closed_angle : float;

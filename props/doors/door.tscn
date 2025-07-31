@@ -24,6 +24,7 @@ _surfaces = [{
 [node name="door" type="StaticBody3D" groups=["door", "interact"]]
 collision_layer = 2
 script = ExtResource("1_8o3ph")
+object_name = "door"
 key_name = "key1"
 variation_angle = -90.0
 

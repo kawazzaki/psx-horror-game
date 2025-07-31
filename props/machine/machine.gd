@@ -1,5 +1,8 @@
 extends StaticBody3D
 
+@export var object_name : String;
+
+
 @export var pickup_item : bool =false; # necessery
 
 var machine_state = "off";

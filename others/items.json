@@ -6,5 +6,9 @@
   "key2": {
     "scene_path": "res://items/key/key.tscn",
     "icon_path": "res://demo/PNG/Green/texture_01.png"
+  },
+  "paper_1": {
+    "scene_path": "res://items/paper/paper.tscn",
+    "icon_path": "res://demo/PNG/Green/texture_02.png"
   }
 }

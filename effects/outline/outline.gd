@@ -13,6 +13,10 @@ func _process(delta: float) -> void:
 	if(player_aim_raycast != null):
 		set_outline(is_aimed_by_raycast(player_aim_raycast))
 		
+	if is_aimed_by_raycast(player_aim_raycast):
+		var parent = self.get_parent()
+		
+		Global.sub_title.text = parent.object_name;
 
 
 func set_outline(value):

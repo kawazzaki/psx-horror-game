@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy4f45hhxpus8"]
+[gd_scene load_steps=5 format=3 uid="uid://cy4f45hhxpus8"]
 
 [ext_resource type="Script" uid="uid://chlir8lhlnjdo" path="res://ui/inventory/ui_inventory.gd" id="1_rrsxw"]
 [ext_resource type="PackedScene" uid="uid://bg1eiqefdrhyy" path="res://ui/inventory/slot.tscn" id="1_vhwfw"]
+[ext_resource type="AudioStream" uid="uid://doeq23tigpvkp" path="res://sounds/inventory.mp3" id="3_pcf3m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ghme"]
 bg_color = Color(0.344624, 0.268625, 0.93986, 1)
@@ -78,5 +79,8 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "exit from herre"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_pcf3m")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

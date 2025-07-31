@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj2ifeiijhv7"]
+[gd_scene load_steps=8 format=3 uid="uid://bj2ifeiijhv7"]
 
 [ext_resource type="Script" uid="uid://do0okqu7ltdx6" path="res://player/scripts/player.gd" id="1_apn28"]
 [ext_resource type="AudioStream" uid="uid://dqtv0semdyx04" path="res://sounds/wood-step-sample-1-47664.mp3" id="2_8h4do"]
@@ -7,8 +7,22 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_t0cpu"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8h4do"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h4do"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.101961, 0.101961, 0.101961, 0.945098)
+albedo_texture = SubResource("NoiseTexture2D_8h4do")
+billboard_mode = 1
+grow_amount = -0.229
+
+[sub_resource type="SphereMesh" id="SphereMesh_8h4do"]
+radius = 10.0
+height = 20.0
+
 [node name="player" type="CharacterBody3D"]
-collision_mask = 3
 script = ExtResource("1_apn28")
 collision_heights = Vector2(0.2, 1)
 walk_sound_fx = ExtResource("2_8h4do")
@@ -28,6 +42,9 @@ collision_mask = 2
 debug_shape_custom_color = Color(0.392157, 0, 0, 1)
 debug_shape_thickness = 5
 
+[node name="SpotLight3D" type="SpotLight3D" parent="head/fpsCam"]
+spot_attenuation = -0.2
+
 [node name="crouchChecker" type="RayCast3D" parent="head"]
 target_position = Vector3(0, 0.5, 0)
 collision_mask = 6
@@ -46,5 +63,10 @@ bus = &"player"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_8h4do")
+mesh = SubResource("SphereMesh_8h4do")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

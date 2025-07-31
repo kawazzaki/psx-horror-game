@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dnxfh6poxvhdc"]
+[gd_scene load_steps=10 format=4 uid="uid://dnxfh6poxvhdc"]
 
 [ext_resource type="Script" uid="uid://c48aftbigx4bi" path="res://items/paper/paper.gd" id="1_bpvnt"]
 [ext_resource type="Texture2D" uid="uid://bmp6rlhg010x6" path="res://demo/PNG/Light/texture_03.png" id="1_tcjut"]
 [ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="2_bpvnt"]
 [ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_ihec2"]
+[ext_resource type="AudioStream" uid="uid://b4c3w1nm8wr05" path="res://sounds/paper.mp3" id="5_ihec2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfwq2"]
 albedo_color = Color(1, 0.239216, 1, 1)
@@ -42,6 +43,9 @@ collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("1_bpvnt")
 paper_name = "paper_1"
+object_name = "paper_1"
+item_name = "paper_1"
+pickup_item = false
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -59,3 +63,7 @@ shape = SubResource("BoxShape3D_6x0dg")
 [node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("3_ihec2")
 outline_mesh = NodePath("../CSGBakedMeshInstance3D/MeshInstance3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_ihec2")
+bus = &"player"

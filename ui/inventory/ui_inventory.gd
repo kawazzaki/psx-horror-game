@@ -22,6 +22,8 @@ func handle_inventory_toggle():
 		if not hold_key_pressing:
 			is_appared = !is_appared
 			Global.toggle_mouse()
+			if(is_appared):
+				$AudioStreamPlayer3D.play()
 			hold_key_pressing = true
 	else:
 		hold_key_pressing = false

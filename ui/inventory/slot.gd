@@ -10,7 +10,7 @@ var item_name = "" ;
 
 
 func _process(delta: float) -> void:
-	
+	print(Global.items_in_inventory[index])
 	if(Global.items_in_inventory[index] == ""):
 		self.get_node("item_name").text = "empty"
 	else:
@@ -27,5 +27,5 @@ func set_empty():
 
 
 func _on_button_pressed() -> void:
-	player.drop_item("key1")
+	player.drop_item(item_name)
 	set_empty()

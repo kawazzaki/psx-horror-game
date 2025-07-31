@@ -97,6 +97,7 @@ data = PackedVector3Array(1, -0.5272, 1, -1, 1.1343, 1, -1, -0.5272, 1, 1, -0.52
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_iiiyd")
+object_name = "drawer"
 open_distance = 2.0
 
 [node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
