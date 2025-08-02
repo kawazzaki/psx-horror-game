@@ -1,34 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj2ifeiijhv7"]
+[gd_scene load_steps=5 format=3 uid="uid://bj2ifeiijhv7"]
 
 [ext_resource type="Script" uid="uid://do0okqu7ltdx6" path="res://player/scripts/player.gd" id="1_apn28"]
 [ext_resource type="AudioStream" uid="uid://dqtv0semdyx04" path="res://sounds/wood-step-sample-1-47664.mp3" id="2_8h4do"]
 [ext_resource type="Script" uid="uid://j11icwycmpk6" path="res://player/scripts/inventory.gd" id="2_t0cpu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_t0cpu"]
-size = Vector3(1, 2, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8h4do"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8h4do"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h4do"]
-transparency = 1
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0.101961, 0.101961, 0.101961, 0.945098)
-albedo_texture = SubResource("NoiseTexture2D_8h4do")
-billboard_mode = 1
-grow_amount = -0.229
-
-[sub_resource type="SphereMesh" id="SphereMesh_8h4do"]
-radius = 10.0
-height = 20.0
-
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_apn28")
-collision_heights = Vector2(0.2, 1)
+collision_heights = Vector2(0.1, 1)
 walk_sound_fx = ExtResource("2_8h4do")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_t0cpu")
+shape = SubResource("CylinderShape3D_8h4do")
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -55,7 +39,7 @@ script = ExtResource("2_t0cpu")
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="foot_step_s" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 unit_size = 1.0
 bus = &"player"
@@ -63,10 +47,5 @@ bus = &"player"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_8h4do")
-mesh = SubResource("SphereMesh_8h4do")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

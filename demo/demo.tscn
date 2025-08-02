@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=18 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
 [ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
@@ -10,17 +10,23 @@
 [ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="5_u10mr"]
 [ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="6_onu7k"]
 [ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="7_s1s6j"]
+[ext_resource type="Script" uid="uid://ddk5887qo7erc" path="res://effects/crt/cfr.gd" id="8_xm42s"]
+[ext_resource type="PackedScene" uid="uid://s6575dg8ty88" path="res://others/scenes/event.tscn" id="13_tdg64"]
+[ext_resource type="PackedScene" uid="uid://7oiilbv5iwxr" path="res://envirenement/lobby_p2/lobby_p_2.tscn" id="14_fy1p0"]
+[ext_resource type="PackedScene" uid="uid://wigyl7om302i" path="res://enemy/event1/enemy_e_1.tscn" id="14_nk31j"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_onu7k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdg64"]
 shader = ExtResource("5_u10mr")
-shader_parameter/brightnessMult = 1.0
-shader_parameter/wiggleMult = 0.0013
+shader_parameter/brightnessMult = 3.0
+shader_parameter/wiggleMult = 0.005
 shader_parameter/chromaticAberrationOffset = 0.0
 
-[sub_resource type="Environment" id="Environment_onvmd"]
+[sub_resource type="Environment" id="Environment_1rqa4"]
 fog_enabled = true
-fog_light_color = Color(0.21459, 0.111077, 0.281954, 1)
-fog_light_energy = 12.18
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
 
 [node name="demo" type="Node3D"]
 script = ExtResource("1_onvmd")
@@ -43,7 +49,7 @@ transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, 
 items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "", "", ""])
 
 [node name="cfr" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_onu7k")
+material = SubResource("ShaderMaterial_tdg64")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,26 +57,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+script = ExtResource("8_xm42s")
 
 [node name="storage1" parent="." instance=ExtResource("7_s1s6j")]
 transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -2.98642, 0.820665, 1.07975)
 items_in_drawers = Array[String](["paper_1"])
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_onvmd")
-
 [node name="nuclear_door" parent="." instance=ExtResource("6_onu7k")]
-transform = Transform3D(-4.87857e-08, 0, 0.530888, 0, 0.797287, 0, -1.11609, 0, -2.32058e-08, 8.89162, 1.62447, -5.57585)
+transform = Transform3D(-4.87857e-08, 0, 0.303249, 0, 0.797287, 0, -1.11609, 0, -1.32554e-08, 8.85584, 1.62447, -5.57585)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.979311, 0.20236, 0, -0.20236, 0.979311, 0, 3.24535, -7.73962)
-light_color = Color(1, 0.890196, 1, 1)
-spot_range = 10.0
-spot_attenuation = 0.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1rqa4")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.121869, 0.992546, 0, -0.992546, 0.121869, 5.64214, 4.78476, 2.68546)
-light_color = Color(1, 0.890196, 1, 1)
-spot_range = 10.0
-spot_attenuation = 0.0
-spot_angle = 30.0
+[node name="event" parent="." node_paths=PackedStringArray("event_engine") instance=ExtResource("13_tdg64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8885, 0, -3.0717)
+event_engine = NodePath("../enemy_e1")
+
+[node name="enemy_e1" parent="." instance=ExtResource("14_nk31j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.576, 0, 16.0975)
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("WorldBoundaryShape3D_nk31j")
+
+[node name="lobby_p2" parent="." instance=ExtResource("14_fy1p0")]

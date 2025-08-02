@@ -10,7 +10,6 @@ var item_name = "" ;
 
 
 func _process(delta: float) -> void:
-	print(Global.items_in_inventory[index])
 	if(Global.items_in_inventory[index] == ""):
 		self.get_node("item_name").text = "empty"
 	else:

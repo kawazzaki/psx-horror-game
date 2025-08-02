@@ -20,7 +20,7 @@ extends CharacterBody3D
 @onready var aim_raycast : RayCast3D = $head/fpsCam/aimChecker
 @onready var crouch_raycast : RayCast3D = $head/crouchChecker
 #@onready var inventory : Node3D = $inventory
-@onready var sound_output : AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var sound_output : AudioStreamPlayer3D = $foot_step_s
 
 
 var rot_y := 0.0

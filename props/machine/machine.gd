@@ -18,7 +18,6 @@ func _ready() -> void:
 
 
 func open_the_blast_door():
-	print('d')
 	blast_door_animator.play("open")
 
 

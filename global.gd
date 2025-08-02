@@ -80,7 +80,10 @@ func show_paper(paper_id: String):
 @onready var sub_title = self.get_tree().root.get_child(1).get_node("sub-title")
 @onready var aim_collider  = self.get_tree().root.get_child(1).get_node("player").aim_collider
 
-func _process(delta: float) -> void:
+
+func subTitle():
 	if(!aim_collider):
 		sub_title.text = ""
 	pass
+func _process(delta: float) -> void:
+	subTitle()

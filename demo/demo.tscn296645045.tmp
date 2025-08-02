@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpv2neigc24sq"]
+
+[ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
+[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
+[ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
+[ext_resource type="PackedScene" uid="uid://byymkiyjqc34n" path="res://ui/sub-title/sub_title.tscn" id="2_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://ejnv5gv02tb1" path="res://envirenement/lobby/lobby.tscn" id="3_dar0o"]
+[ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="3_ykvhj"]
+[ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="4_j5lb4"]
+[ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="5_u10mr"]
+[ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="6_onu7k"]
+[ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="7_s1s6j"]
+[ext_resource type="PackedScene" uid="uid://b72nrefhr1ujm" path="res://envirenement/lobby_p2/model/lobby_p2.glb" id="11_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://s6575dg8ty88" path="res://others/scenes/event.tscn" id="13_tdg64"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onu7k"]
+shader = ExtResource("5_u10mr")
+shader_parameter/brightnessMult = 1.0
+shader_parameter/wiggleMult = 0.001
+shader_parameter/chromaticAberrationOffset = 0.0
+
+[sub_resource type="Environment" id="Environment_1rqa4"]
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+
+[node name="demo" type="Node3D" node_paths=PackedStringArray("cfr")]
+script = ExtResource("1_onvmd")
+cfr = NodePath("cfr")
+
+[node name="sub-title" parent="." instance=ExtResource("2_1rqa4")]
+
+[node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
+
+[node name="read" parent="." instance=ExtResource("3_ykvhj")]
+visible = false
+
+[node name="player" parent="." instance=ExtResource("1_d6po2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2657, 2.74012, -6.24905)
+
+[node name="lobby" parent="." instance=ExtResource("3_dar0o")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -5.80933)
+
+[node name="desk" parent="." instance=ExtResource("4_j5lb4")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, -13.9059)
+items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "", "", ""])
+
+[node name="cfr" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_onu7k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="storage1" parent="." instance=ExtResource("7_s1s6j")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -2.98642, 0.820665, 1.07975)
+items_in_drawers = Array[String](["paper_1"])
+
+[node name="nuclear_door" parent="." instance=ExtResource("6_onu7k")]
+transform = Transform3D(-4.87857e-08, 0, 0.530888, 0, 0.797287, 0, -1.11609, 0, -2.32058e-08, 8.89162, 1.62447, -5.57585)
+
+[node name="lobby_p2" parent="." instance=ExtResource("11_1rqa4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1rqa4")
+
+[node name="event" parent="." instance=ExtResource("13_tdg64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62432, 0, -5.46403)
