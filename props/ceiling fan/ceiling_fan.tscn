@@ -79,5 +79,6 @@ autoplay = "spin"
 stream = ExtResource("2_isnvd")
 unit_size = 3.0
 autoplay = true
+max_distance = 20.0
 
 [editable path="ceiling fan_gltf"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=19 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
 [ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://s6575dg8ty88" path="res://others/scenes/event.tscn" id="13_tdg64"]
 [ext_resource type="PackedScene" uid="uid://7oiilbv5iwxr" path="res://envirenement/lobby_p2/lobby_p_2.tscn" id="14_fy1p0"]
 [ext_resource type="PackedScene" uid="uid://wigyl7om302i" path="res://enemy/event1/enemy_e_1.tscn" id="14_nk31j"]
+[ext_resource type="PackedScene" uid="uid://dnxfh6poxvhdc" path="res://items/paper/paper.tscn" id="15_fy1p0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tdg64"]
 shader = ExtResource("5_u10mr")
@@ -21,12 +22,10 @@ shader_parameter/brightnessMult = 3.0
 shader_parameter/wiggleMult = 0.005
 shader_parameter/chromaticAberrationOffset = 0.0
 
-[sub_resource type="Environment" id="Environment_1rqa4"]
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_light_energy = 0.0
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy1p0"]
+size = Vector3(8.69055, 1, 10.5049)
 
 [node name="demo" type="Node3D"]
 script = ExtResource("1_onvmd")
@@ -36,17 +35,16 @@ script = ExtResource("1_onvmd")
 [node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
 
 [node name="read" parent="." instance=ExtResource("3_ykvhj")]
-visible = false
 
 [node name="player" parent="." instance=ExtResource("1_d6po2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2657, 2.74012, -6.24905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49602, 1.73734, -6.24905)
 
 [node name="lobby" parent="." instance=ExtResource("3_dar0o")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -5.80933)
 
 [node name="desk" parent="." instance=ExtResource("4_j5lb4")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, -13.9059)
-items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "", "", ""])
+items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "screw_remover", "", ""])
 
 [node name="cfr" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tdg64")
@@ -66,19 +64,28 @@ items_in_drawers = Array[String](["paper_1"])
 [node name="nuclear_door" parent="." instance=ExtResource("6_onu7k")]
 transform = Transform3D(-4.87857e-08, 0, 0.303249, 0, 0.797287, 0, -1.11609, 0, -1.32554e-08, 8.85584, 1.62447, -5.57585)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1rqa4")
-
 [node name="event" parent="." node_paths=PackedStringArray("event_engine") instance=ExtResource("13_tdg64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8885, 0, -3.0717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0858, 0, -5.41255)
 event_engine = NodePath("../enemy_e1")
 
 [node name="enemy_e1" parent="." instance=ExtResource("14_nk31j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.576, 0, 16.0975)
 
-[node name="ground" type="StaticBody3D" parent="."]
+[node name="collisions" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181082, 0)
+collision_layer = 7
+collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions"]
 shape = SubResource("WorldBoundaryShape3D_nk31j")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4233, 1.82425, 1.98407)
+shape = SubResource("BoxShape3D_fy1p0")
+debug_color = Color(0.297961, 0.176172, 0.392508, 0.42)
+
 [node name="lobby_p2" parent="." instance=ExtResource("14_fy1p0")]
+
+[node name="paper" parent="." instance=ExtResource("15_fy1p0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1289, 2.28166, -9.45175)
+paper_name = "paper0"

@@ -8,7 +8,6 @@
 size = Vector3(11.9697, 5.10046, 4.42163)
 
 [node name="desk" type="StaticBody3D"]
-collision_mask = 0
 script = ExtResource("1_5fshp")
 
 [node name="desk" parent="." instance=ExtResource("1_x7ws4")]

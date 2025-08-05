@@ -12,5 +12,8 @@ func _ready():
 	pass
 
 func interact():
-	print(self.name)
+	if(pickup_item):
+		print(self.name)
+		queue_free()
+	
 	pass

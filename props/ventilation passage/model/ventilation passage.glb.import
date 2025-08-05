@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://crx4inhgl3ejx"
-path="res://.godot/imported/lobby_p2.glb-6f08b256806321d11c7312fd38cd216b.scn"
+uid="uid://c5j40w314wjnp"
+path="res://.godot/imported/ventilation passage.glb-d97bd8ca9de7b20fa6a4e31a25313717.scn"
 
 [deps]
 
-source_file="res://envirenement/lobby_p2/model/lobby_p2.glb"
-dest_files=["res://.godot/imported/lobby_p2.glb-6f08b256806321d11c7312fd38cd216b.scn"]
+source_file="res://props/ventilation passage/model/ventilation passage.glb"
+dest_files=["res://.godot/imported/ventilation passage.glb-d97bd8ca9de7b20fa6a4e31a25313717.scn"]
 
 [params]
 
@@ -32,12 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:p2": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

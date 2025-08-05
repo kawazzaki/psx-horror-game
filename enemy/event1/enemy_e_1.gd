@@ -33,3 +33,9 @@ func interact(player : CharacterBody3D):
 	calcul_distance()
 
 	pass
+
+
+func destroy_self():
+	cfr_fx.change_chromaticAberrationOffset(0.001);
+	cfr_fx.change_brightnessMult(3);
+	queue_free()

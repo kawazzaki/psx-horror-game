@@ -6,5 +6,9 @@
   "paper_2": {
     "title": "Warning",
     "content": "Do not enter the forest after dark.\nStrange things happen there."
+  },
+  "paper0":{
+    "title" : "",
+    "content":"The Conversion Protocol\n\nThey say it doesn’t destroy… it reverts.\nAnything it touches begins to fracture — not physically, but fundamentally. Textures peel away. Polygons unravel.\nWhat remains is... the prototype.\n\nStripped of identity. Stripped of purpose.\nFrozen in a half-born state, like a memory of what it once was.\n\nSome say it’s not malfunctioning.\nIt’s cleansing.\n\nBeware the glitch.\nOnce you feel it crawl across the mesh of your being...\nIt's already too late."
   }
 }

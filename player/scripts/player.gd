@@ -55,9 +55,9 @@ func _physics_process(delta):
 	breathing_effect(delta)
 	detect_interact_object()
 	update_footstep_timer()
-	
+	print(standing_possibility())
 	slot_index = Global.check_if_inventory_full();
-	print(Global.items_in_inventory , slot_index)
+
 
 func _input(event):
 
@@ -72,7 +72,7 @@ func _handle_input():
 	else:
 		speed = walk_speed
 
-	if Input.is_key_pressed(crouch_key):
+	if Input.is_key_pressed(crouch_key) && velocity == Vector3.ZERO:
 		if not crouch_key_held:
 			if(is_crouching == true):
 				if(standing_possibility()):

@@ -21,7 +21,7 @@ func _ready():
 			items = json
 	load_papers()
 
-
+#check if database has an item
 func has_item(item_name: String) -> bool:
 	return item_name in items
 
@@ -85,5 +85,13 @@ func subTitle():
 	if(!aim_collider):
 		sub_title.text = ""
 	pass
+
+#check if player has an item
+func check_item_is_in_inventory(item_name: String):
+	for item in items_in_inventory:
+		if(item == item_name):
+			return true
+	return false
+
 func _process(delta: float) -> void:
 	subTitle()
