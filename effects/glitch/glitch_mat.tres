@@ -7,7 +7,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ulirp")
-shader_parameter/shake_power = 2.0
+shader_parameter/shake_power = 0.1
 shader_parameter/shake_rate = 0.5
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5

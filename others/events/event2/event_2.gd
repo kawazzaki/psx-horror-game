@@ -15,9 +15,13 @@ func _on_body_entered(body: Node3D) -> void:
 func interact():
 	enable_event(1,1)
 	$AnimationPlayer.play("event")
-	EventManager.complete_event(event_index);
+	
 	pass
 
+func finish_animation():
+	EventManager.complete_event(event_index);
+	self.queue_free()
+	pass
 
 func disable_event():
 	visible = false

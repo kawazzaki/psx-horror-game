@@ -1,28 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt6beskohu641"]
+[gd_scene load_steps=10 format=3 uid="uid://bt6beskohu641"]
 
 [ext_resource type="Script" uid="uid://b17onbjuip85" path="res://others/events/event2/event_2.gd" id="1_oi4j2"]
 [ext_resource type="Material" uid="uid://dldypadx2f7xc" path="res://others/events/event.tres" id="2_8eaw7"]
 [ext_resource type="PackedScene" uid="uid://dkoteowiolvtu" path="res://enemy/enemy_no_gameplay/enemy0.tscn" id="3_0sc31"]
+[ext_resource type="AudioStream" uid="uid://cyrcgvj1t1kjh" path="res://sounds/sudden-shock-reveal-bass-283846.mp3" id="4_gtbrf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52k5u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_obtxl"]
-
-[sub_resource type="Animation" id="Animation_gtbrf"]
-resource_name = "event"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("enemy:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-4.72789, -0.206634, -3.14232), Vector3(4.44169, -0.0956633, -3.14232)]
-}
 
 [sub_resource type="Animation" id="Animation_6pwyo"]
 length = 0.001
@@ -38,6 +23,61 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-4.72789, -1.06666, -3.14232)]
 }
+
+[sub_resource type="Animation" id="Animation_gtbrf"]
+resource_name = "event"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.72789, -0.206634, -3.14232), Vector3(10.7258, -0.0956633, -3.14232)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("enemy/Sketchfab_Scene2/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Walk"),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.53333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_animation"
+}]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 2.97,
+"start_offset": 2.37,
+"stream": ExtResource("4_gtbrf")
+}],
+"times": PackedFloat32Array(0.333333)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80qfb"]
 _data = {
@@ -57,11 +97,37 @@ material_override = ExtResource("2_8eaw7")
 mesh = SubResource("BoxMesh_obtxl")
 
 [node name="enemy" parent="." instance=ExtResource("3_0sc31")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72789, -1.06666, -3.14232)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.72789, -1.06666, -3.14232)
+
+[node name="Skeleton3D" parent="enemy/Sketchfab_Scene2/Sketchfab_model/demon_fbx/Object_2/RootNode/metarig/Object_6" index="0"]
+bones/2/rotation = Quaternion(-0.0314498, 2.44015e-19, 1.47853e-18, 0.999505)
+bones/4/rotation = Quaternion(0.514284, -4.61567e-17, -3.56957e-17, 0.85762)
+bones/6/rotation = Quaternion(0.355773, -2.62066e-07, 1.67355e-07, 0.934572)
+bones/7/rotation = Quaternion(-0.55289, 1.21893e-07, -1.28473e-07, 0.833254)
+bones/8/rotation = Quaternion(0.882885, -3.25168e-08, -1.85119e-07, 0.469589)
+bones/11/rotation = Quaternion(-0.161107, 0.466424, -0.666862, 0.55838)
+bones/12/rotation = Quaternion(0.336634, -0.11571, -0.136617, 0.924459)
+bones/16/rotation = Quaternion(0.190307, 0.58891, -0.600677, -0.506118)
+bones/17/rotation = Quaternion(0.353548, 0.124879, 0.144148, 0.915768)
+bones/28/rotation = Quaternion(-0.982769, 0.0144304, -0.0148959, -0.18367)
+bones/29/rotation = Quaternion(0.744552, 0.0071699, -0.0475434, 0.665831)
+bones/30/rotation = Quaternion(-0.877135, -0.0482788, 0.0316575, 0.476761)
+bones/35/rotation = Quaternion(-0.724006, -0.00496365, 0.0287286, -0.689177)
+bones/36/rotation = Quaternion(0.745306, -0.00716055, 0.0475914, 0.664983)
+bones/37/rotation = Quaternion(0.476722, -0.0271131, 0.041241, -0.877668)
+bones/42/position = Vector3(0.0999407, 0.30271, 0.280087)
+bones/44/position = Vector3(-0.098643, -0.251752, 0.310656)
+
+[node name="AnimationPlayer" parent="enemy/Sketchfab_Scene2" index="1"]
+speed_scale = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_80qfb")
 }
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="enemy"]
