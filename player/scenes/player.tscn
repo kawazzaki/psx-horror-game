@@ -29,7 +29,7 @@ debug_shape_thickness = 5
 [node name="SpotLight3D" type="SpotLight3D" parent="head/fpsCam"]
 
 [node name="crouchChecker" type="RayCast3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, -0.832948, 0)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, -0.832948, 0)
 target_position = Vector3(0, 1.375, 0)
 collision_mask = 6
 

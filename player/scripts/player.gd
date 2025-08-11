@@ -49,14 +49,15 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	_handle_input()
-	apply_gravity(delta)
-	move_and_slide()
-	breathing_effect(delta)
-	detect_interact_object()
-	update_footstep_timer()
-	print(standing_possibility())
-	slot_index = Global.check_if_inventory_full();
+	if(Global.player_can_move):
+		_handle_input()
+		apply_gravity(delta)
+		move_and_slide()
+		breathing_effect(delta)
+		detect_interact_object()
+		update_footstep_timer()
+		print(standing_possibility())
+		slot_index = Global.check_if_inventory_full();
 
 
 func _input(event):
@@ -72,7 +73,7 @@ func _handle_input():
 	else:
 		speed = walk_speed
 
-	if Input.is_key_pressed(crouch_key) && velocity == Vector3.ZERO:
+	if Input.is_key_pressed(crouch_key) :
 		if not crouch_key_held:
 			if(is_crouching == true):
 				if(standing_possibility()):
@@ -89,10 +90,10 @@ func _handle_input():
 	if is_crouching:
 		speed = crouch_speed
 		var tween = get_tree().create_tween()
-		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.x,collision_shape.scale.z),0.5)
+		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.x,collision_shape.scale.z),0.2)
 	else:
 		var tween = get_tree().create_tween()
-		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.y,collision_shape.scale.z),0.5)
+		tween.tween_property(collision_shape,"scale",Vector3(collision_shape.scale.x,collision_heights.y,collision_shape.scale.z),0.2)
 
 	
 	var dir := Vector3.ZERO
@@ -149,7 +150,7 @@ func swap_inventory_item():
 		else:
 			if(aim_collider.pickup_item == true):
 				aim_collider.interact();
-				Global.items_in_inventory[slot_index] = aim_collider.item_name;
+				Global.items_in_inventory[slot_index] = aim_collider.object_name;
 
 
 #old system :/
@@ -176,7 +177,7 @@ func drop_item(item_name):
 			var item_instance = item_scene.instantiate()
 			item_instance.global_position = self.global_position + Vector3(1, 0, 0)
 			get_tree().current_scene.add_child(item_instance)
-			item_instance.item_name = item_name
+			item_instance.object_name = item_name
 		else:
 			print("Failed to load scene for item:", item_name)
 	else:

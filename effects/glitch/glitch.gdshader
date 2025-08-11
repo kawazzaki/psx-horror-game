@@ -52,4 +52,3 @@ void fragment() {
 
     ALBEDO = pixel_color.rgb;
 }
-

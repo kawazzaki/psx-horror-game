@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://byymkiyjqc34n"]
+[gd_scene load_steps=3 format=3 uid="uid://byymkiyjqc34n"]
 
+[ext_resource type="FontFile" uid="uid://dq1mbflug1buk" path="res://others/fonts/acknowtt.ttf" id="1_rjnft"]
 [ext_resource type="Script" uid="uid://dha2c3s7ik7pa" path="res://ui/sub-title/sub_title.gd" id="1_tkulo"]
 
 [node name="sub-title" type="Label"]
@@ -14,5 +15,7 @@ offset_right = 82.5
 offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_rjnft")
 text = "sadlaskfhlkashjlkdjas"
+horizontal_alignment = 1
 script = ExtResource("1_tkulo")

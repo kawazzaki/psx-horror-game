@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 
 func check_player_if_has_the_key():
-	for slot in Global.inventory.items_in_inventory:
+	for slot in Global.items_in_inventory:
 		if(slot == key_name):
 			opende_for_first_time = true
 			return true;

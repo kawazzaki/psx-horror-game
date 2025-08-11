@@ -10,15 +10,17 @@ var machine_state = "off";
 var material : StandardMaterial3D;
 
 @export var texture : Texture;
-@onready var blast_door_animator = self.get_tree().root.get_child(1).get_node("nuclear_door/AnimationPlayer");
+@export var pc_ui : Control;
+@export var blast_door : Node3D;
 
+var first_time = true;
 func _ready() -> void:
 	var mesh : MeshInstance3D = $MeshInstance3D;
 	material  = mesh.material_override;
 
 
 func open_the_blast_door():
-	blast_door_animator.play("open")
+	blast_door.get_node("AnimationPlayer").play("open")
 
 
 
@@ -28,9 +30,14 @@ func change_texture(tex : Texture):
 
 
 func interact():
+	if(first_time == true):
+		pc_ui.visible = true;
+		Global.toggle_mouse();
+	pass
+
+func first_animation():
 	if(machine_state == "off"):
 		#change_texture(texture)
 		$AnimationPlayer.play('turn_on')
 		machine_state == "on"
 		
-	pass

@@ -30,7 +30,7 @@ func spawn_item(item_name):
 				var item_instance = item_scene.instantiate()
 				self.add_child(item_instance)
 				item_instance.position = $item_pos.position
-				item_instance.item_name = item_name
+				item_instance.object_name = item_name
 			else:
 				print("Failed to load scene for item:", item_name)
 		else:

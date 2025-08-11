@@ -1,26 +1,35 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=20 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
-[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
+[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://autoload/global.gd" id="1_onvmd"]
 [ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
 [ext_resource type="PackedScene" uid="uid://byymkiyjqc34n" path="res://ui/sub-title/sub_title.tscn" id="2_1rqa4"]
-[ext_resource type="PackedScene" uid="uid://ejnv5gv02tb1" path="res://envirenement/lobby/lobby.tscn" id="3_dar0o"]
 [ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="3_ykvhj"]
-[ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="4_j5lb4"]
-[ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="5_u10mr"]
-[ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="6_onu7k"]
-[ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="7_s1s6j"]
-[ext_resource type="Script" uid="uid://ddk5887qo7erc" path="res://effects/crt/cfr.gd" id="8_xm42s"]
-[ext_resource type="PackedScene" uid="uid://s6575dg8ty88" path="res://others/scenes/event.tscn" id="13_tdg64"]
-[ext_resource type="PackedScene" uid="uid://7oiilbv5iwxr" path="res://envirenement/lobby_p2/lobby_p_2.tscn" id="14_fy1p0"]
-[ext_resource type="PackedScene" uid="uid://wigyl7om302i" path="res://enemy/event1/enemy_e_1.tscn" id="14_nk31j"]
-[ext_resource type="PackedScene" uid="uid://dnxfh6poxvhdc" path="res://items/paper/paper.tscn" id="15_fy1p0"]
+[ext_resource type="Shader" uid="uid://5txyg0nahgpw" path="res://effects/pixelaze/pixel.gdshader" id="8_onvmd"]
+[ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="10_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://bkb21owl1u40i" path="res://envirenement/lobby/model/lobby.glb" id="10_ykvhj"]
+[ext_resource type="PackedScene" uid="uid://bci720gpllgkg" path="res://ui/pc/pc_ui.tscn" id="11_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://5lhmhfepayks" path="res://props/machine/machine.tscn" id="11_xm42s"]
+[ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="12_xm42s"]
+[ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="13_tdg64"]
+[ext_resource type="PackedScene" uid="uid://beogl7q0gdiq3" path="res://props/ceiling fan/ceiling_fan.tscn" id="14_nk31j"]
+[ext_resource type="PackedScene" uid="uid://bpn0mudnll430" path="res://props/ventilation passage/ventilation_passage.tscn" id="15_fy1p0"]
+[ext_resource type="PackedScene" uid="uid://bvmawe4sda4q" path="res://props/radio/radio.tscn" id="16_d1m6b"]
+[ext_resource type="PackedScene" uid="uid://b1g8e473docxa" path="res://others/events/thunder/thunder.tscn" id="16_svvho"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdg64"]
-shader = ExtResource("5_u10mr")
-shader_parameter/brightnessMult = 3.0
-shader_parameter/wiggleMult = 0.005
-shader_parameter/chromaticAberrationOffset = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oeqrt"]
+shader = ExtResource("8_onvmd")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.2
+shader_parameter/pixelSize = 234.685
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
 
@@ -30,49 +39,32 @@ size = Vector3(8.69055, 1, 10.5049)
 [node name="demo" type="Node3D"]
 script = ExtResource("1_onvmd")
 
-[node name="sub-title" parent="." instance=ExtResource("2_1rqa4")]
-
-[node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
-
-[node name="read" parent="." instance=ExtResource("3_ykvhj")]
-
-[node name="player" parent="." instance=ExtResource("1_d6po2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49602, 1.73734, -6.24905)
-
-[node name="lobby" parent="." instance=ExtResource("3_dar0o")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -5.80933)
-
-[node name="desk" parent="." instance=ExtResource("4_j5lb4")]
-transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.554127, 0.824613, -13.9059)
-items_in_drawers = Array[String](["key1", "key2", "key2", "key1", "screw_remover", "", ""])
-
-[node name="cfr" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_tdg64")
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oeqrt")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("8_xm42s")
 
-[node name="storage1" parent="." instance=ExtResource("7_s1s6j")]
-transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -2.98642, 0.820665, 1.07975)
-items_in_drawers = Array[String](["paper_1"])
+[node name="pc_ui" parent="." node_paths=PackedStringArray("machine") instance=ExtResource("11_1rqa4")]
+machine = NodePath("../props/machine")
 
-[node name="nuclear_door" parent="." instance=ExtResource("6_onu7k")]
-transform = Transform3D(-4.87857e-08, 0, 0.303249, 0, 0.797287, 0, -1.11609, 0, -1.32554e-08, 8.85584, 1.62447, -5.57585)
+[node name="sub-title" parent="." instance=ExtResource("2_1rqa4")]
 
-[node name="event" parent="." node_paths=PackedStringArray("event_engine") instance=ExtResource("13_tdg64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0858, 0, -5.41255)
-event_engine = NodePath("../enemy_e1")
+[node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
 
-[node name="enemy_e1" parent="." instance=ExtResource("14_nk31j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.576, 0, 16.0975)
+[node name="read" parent="." instance=ExtResource("3_ykvhj")]
+visible = false
+
+[node name="player" parent="." instance=ExtResource("1_d6po2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18378, 1.73734, -3.18527)
+visible = false
 
 [node name="collisions" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181082, 0)
+visible = false
 collision_layer = 7
 collision_mask = 7
 
@@ -84,8 +76,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4233, 1.82425, 1.98407)
 shape = SubResource("BoxShape3D_fy1p0")
 debug_color = Color(0.297961, 0.176172, 0.392508, 0.42)
 
-[node name="lobby_p2" parent="." instance=ExtResource("14_fy1p0")]
+[node name="lobby" parent="." instance=ExtResource("10_ykvhj")]
 
-[node name="paper" parent="." instance=ExtResource("15_fy1p0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1289, 2.28166, -9.45175)
-paper_name = "paper0"
+[node name="props" type="Node3D" parent="."]
+
+[node name="desk" parent="props" instance=ExtResource("12_xm42s")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.439739, 0.815141, -13.5766)
+items_in_drawers = Array[String](["screw_remover", "", "", "", "", "", ""])
+
+[node name="storage1" parent="props" instance=ExtResource("10_1rqa4")]
+transform = Transform3D(-0.689365, 0, 0.121554, 0, 0.7, 0, -0.121554, 0, -0.689365, -2.83403, 0.715803, 0.832203)
+
+[node name="machine" parent="props" node_paths=PackedStringArray("pc_ui", "blast_door") instance=ExtResource("11_xm42s")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.58563, 0.621486, -14.0906)
+pc_ui = NodePath("../../pc_ui")
+blast_door = NodePath("../nuclear_door")
+
+[node name="nuclear_door" parent="props" instance=ExtResource("13_tdg64")]
+transform = Transform3D(-5.11886e-08, 0, 0.390761, 0, 0.812034, 0, -1.17106, 0, -1.70807e-08, 8.89664, 1.54975, -5.63747)
+
+[node name="ceiling fan" parent="props" instance=ExtResource("14_nk31j")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 3.51682, -5.84247)
+
+[node name="ventilation passage" parent="props" instance=ExtResource("15_fy1p0")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 31.61, 0.774752, -3.26045)
+
+[node name="radio" parent="props" instance=ExtResource("16_d1m6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.78806, -9.43324)
+
+[node name="events" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18378, 1.73734, -3.18527)
+
+[node name="thunder" parent="events" instance=ExtResource("16_svvho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0873, -1.12063, -2.08999)

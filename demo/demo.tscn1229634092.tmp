@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpv2neigc24sq"]
+
+[ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
+[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://global.gd" id="1_onvmd"]
+[ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
+[ext_resource type="PackedScene" uid="uid://byymkiyjqc34n" path="res://ui/sub-title/sub_title.tscn" id="2_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="3_ykvhj"]
+[ext_resource type="Shader" uid="uid://5txyg0nahgpw" path="res://effects/pixelaze/pixel.gdshader" id="8_onvmd"]
+[ext_resource type="PackedScene" uid="uid://dnxfh6poxvhdc" path="res://items/paper/paper.tscn" id="9_oeqrt"]
+[ext_resource type="PackedScene" uid="uid://bxtj7u6dwqj0f" path="res://items/key/key.tscn" id="10_1rqa4"]
+[ext_resource type="PackedScene" uid="uid://bkb21owl1u40i" path="res://envirenement/lobby/model/lobby.glb" id="10_ykvhj"]
+[ext_resource type="PackedScene" uid="uid://bsf1hpfcc0egi" path="res://props/doors/door.tscn" id="11_xm42s"]
+[ext_resource type="PackedScene" uid="uid://b1g8e473docxa" path="res://others/audio event/audio_event.tscn" id="16_svvho"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oeqrt"]
+shader = ExtResource("8_onvmd")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.2
+shader_parameter/pixelSize = 183.535
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy1p0"]
+size = Vector3(8.69055, 1, 10.5049)
+
+[node name="demo" type="Node3D"]
+script = ExtResource("1_onvmd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oeqrt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="sub-title" parent="." instance=ExtResource("2_1rqa4")]
+
+[node name="ui_inventory" parent="." instance=ExtResource("1_u10mr")]
+
+[node name="read" parent="." instance=ExtResource("3_ykvhj")]
+visible = false
+
+[node name="player" parent="." instance=ExtResource("1_d6po2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87933, 1.73734, -2.38931)
+visible = false
+
+[node name="audio event" parent="." instance=ExtResource("16_svvho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0858, 0, -5.41255)
+visible = false
+
+[node name="collisions" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181082, 0)
+visible = false
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions"]
+shape = SubResource("WorldBoundaryShape3D_nk31j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4233, 1.82425, 1.98407)
+shape = SubResource("BoxShape3D_fy1p0")
+debug_color = Color(0.297961, 0.176172, 0.392508, 0.42)
+
+[node name="lobby" parent="." instance=ExtResource("10_ykvhj")]
+
+[node name="paper" parent="." instance=ExtResource("9_oeqrt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97868, 0.283969, -2.11946)
+object_name = "paper0"
+
+[node name="key" parent="." node_paths=PackedStringArray("my_doors") instance=ExtResource("10_1rqa4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48435, 0.283969, -3.16393)
+my_doors = [NodePath("../door")]
+object_name = "key1"
+
+[node name="door" parent="." instance=ExtResource("11_xm42s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8549, 2.26462, -6.76251)
+islocked = true

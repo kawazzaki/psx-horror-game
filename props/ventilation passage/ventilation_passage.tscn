@@ -134,7 +134,7 @@ libraries = {
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0oot2")
-object_name = "demo"
+object_name = "ventilation"
 interact_item = "screw_remover"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -150,6 +150,6 @@ skeleton = NodePath("")
 material_override = SubResource("StandardMaterial3D_d0tsj")
 mesh = SubResource("ArrayMesh_q1xwc")
 
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
+[node name="outline" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("3_qntbr")
-outline_mesh = NodePath("../StaticBody3D/Cube/MeshInstance3D")
+outline_mesh = NodePath("../Cube/MeshInstance3D")

@@ -11,5 +11,4 @@ extends ITEM
 
 func interact():
 	queue_free()
-	print('key_interact')
 	pass

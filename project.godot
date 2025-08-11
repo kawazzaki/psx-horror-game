@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://autoload/global.gd"
+EventManager="*res://autoload/EventManager.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ door=""
 blocking=""
 interact=""
 drawer=""
+
+[gui]
+
+theme/custom_font="uid://b1ksbwhxwnba6"
 
 [input]
 

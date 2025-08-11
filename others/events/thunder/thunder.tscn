@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1g8e473docxa"]
+
+[ext_resource type="Script" uid="uid://daay1u6uf5x2m" path="res://others/events/thunder/thunder.gd" id="1_dqpyu"]
+[ext_resource type="AudioStream" uid="uid://cglwn7x4x3rg1" path="res://sounds/heavy-thunder-sound-effect-no-copyright-338980.mp3" id="1_vosj4"]
+
+[sub_resource type="Animation" id="Animation_aex5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dqpyu"]
+resource_name = "event1"
+length = 6.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_vosj4")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.266667, 0.4, 0.5, 0.585434, 0.685434, 0.865881, 1.1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 100.0, 0.0, 100.0, 0.0, 100.0, 0.0, 100.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_event"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5qgk"]
+_data = {
+&"RESET": SubResource("Animation_aex5t"),
+&"event": SubResource("Animation_dqpyu")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cd4v8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cd4v8"]
+albedo_color = Color(1, 0.345098, 0.443137, 0.298039)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxb0d"]
+
+[node name="thunder" type="Area3D"]
+script = ExtResource("1_dqpyu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0, 0)
+light_energy = 0.0
+directional_shadow_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g5qgk")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cd4v8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cd4v8")
+mesh = SubResource("BoxMesh_jxb0d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

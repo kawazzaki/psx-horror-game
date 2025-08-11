@@ -6,7 +6,7 @@ var player_aim_raycast : RayCast3D ;
 
 func _ready() -> void:
 	outline_mesh.visible = false;
-	player_aim_raycast = get_tree().root.get_child(1).get_node("player").get_node("head/fpsCam/aimChecker")
+	player_aim_raycast = get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player").get_node("head/fpsCam/aimChecker")
 
 func _process(delta: float) -> void:
 	
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if is_aimed_by_raycast(player_aim_raycast):
 		var parent = self.get_parent()
 		
-		Global.sub_title.text = parent.object_name;
+		Global.sub_title.set_object_subTitle(parent.object_name)
 
 
 func set_outline(value):
