@@ -6,7 +6,7 @@ var item_name = "" ;
 @export var index = 0;
 
 #nodes
-@onready var player = self.get_tree().root.get_child(1).get_node("player")
+@onready var player = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player")
 
 
 func _process(delta: float) -> void:

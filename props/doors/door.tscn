@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://bsf1hpfcc0egi"]
+[gd_scene load_steps=8 format=4 uid="uid://bsf1hpfcc0egi"]
 
 [ext_resource type="Script" uid="uid://d15pusn2gkybg" path="res://props/doors/door.gd" id="1_8o3ph"]
 [ext_resource type="PackedScene" uid="uid://dimkqernlirj2" path="res://props/doors/model/door.gltf.glb" id="3_38qra"]
 [ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="3_niran"]
 [ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="4_rymsu"]
+[ext_resource type="AudioStream" uid="uid://cu6h2xarmcc4j" path="res://sounds/door-opening-353874.mp3" id="5_uy0qp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_moked"]
 size = Vector3(0.279, 3.96106, 1.94934)
@@ -45,3 +46,6 @@ skeleton = NodePath("")
 [node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("4_rymsu")
 outline_mesh = NodePath("../door_gltf/MeshInstance3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_uy0qp")

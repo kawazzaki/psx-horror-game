@@ -81,10 +81,10 @@ script = ExtResource("1_dqpyu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0, 0)
 light_energy = 0.0
-directional_shadow_mode = 0
+omni_range = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -35,6 +35,7 @@ func interact():
 	if(!islocked):
 		isclosed = !isclosed;
 		var tween = get_tree().create_tween()
+		$AudioStreamPlayer3D.play()
 		if (isclosed == true):
 			tween.tween_property(self,"rotation_degrees",Vector3(rotation_degrees.x,closed_angle,rotation_degrees.z),0.5)
 			pass
