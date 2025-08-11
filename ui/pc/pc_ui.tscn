@@ -9,6 +9,8 @@
 bg_color = Color(0.831373, 0.815686, 0.784314, 1)
 
 [sub_resource type="Theme" id="Theme_pvpqv"]
+Button/styles/focus = SubResource("StyleBoxFlat_mw55y")
+Button/styles/hover = SubResource("StyleBoxFlat_mw55y")
 Button/styles/normal = SubResource("StyleBoxFlat_mw55y")
 
 [node name="pc_ui" type="Control"]

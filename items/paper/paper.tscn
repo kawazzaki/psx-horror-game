@@ -1,60 +1,39 @@
-[gd_scene load_steps=10 format=4 uid="uid://dnxfh6poxvhdc"]
+[gd_scene load_steps=9 format=4 uid="uid://dnxfh6poxvhdc"]
 
 [ext_resource type="Script" uid="uid://c48aftbigx4bi" path="res://items/paper/paper.gd" id="1_bpvnt"]
-[ext_resource type="Texture2D" uid="uid://bmp6rlhg010x6" path="res://demo/PNG/Light/texture_03.png" id="1_tcjut"]
-[ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="2_bpvnt"]
 [ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_ihec2"]
 [ext_resource type="AudioStream" uid="uid://b4c3w1nm8wr05" path="res://sounds/paper.mp3" id="5_ihec2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfwq2"]
-albedo_color = Color(1, 0.239216, 1, 1)
-albedo_texture = ExtResource("1_tcjut")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_cljnc"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
-"format": 34359738391,
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAL8AAAC/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAD8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAL8AAAC/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
-}]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_q1ihy"]
-_surfaces = [{
-"aabb": AABB(-0.514434, -0.514434, -0.514434, 1.02887, 1.02887, 1.02887),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAACAAEAAwAFAAQABgAIAAcACQALAAoADAAOAA0ADwARABAAEgAUABMAFQAXABYAGAAaABkAGwAdABwAHgAgAB8AIQAjACIA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("7rEDv+6xA7/usQM/7rEDv+6xA7/usQO/7rEDv+6xAz/usQO/7rEDP+6xA7/usQO/7rEDv+6xA7/usQO/7rEDv+6xA7/usQM/7rEDv+6xAz/usQO/7rEDv+6xA7/usQO/7rEDP+6xA7/usQO/7rEDv+6xAz/usQO/7rEDv+6xAz/usQM/7rEDv+6xA7/usQM/7rEDv+6xA7/usQM/7rEDv+6xAz/usQM/7rEDP+6xAz/usQM/7rEDP+6xAz/usQM/7rEDv+6xAz/usQM/7rEDv+6xAz/usQO/7rEDv+6xA7/usQM/7rEDP+6xA7/usQM/7rEDP+6xA7/usQO/7rEDP+6xAz/usQM/7rEDP+6xA7/usQM/7rEDv+6xA7/usQM/7rEDP+6xA7/usQO/7rEDP+6xA7/usQM/7rEDP+6xAz/usQM/7rEDP+6xA7/usQO/7rEDP+6xAz/usQO/7rEDv+6xAz/usQO/7rEDv+6xAz/usQO/7rEDP+6xAz/usQO/7rEDP+6xAz/usQM/7rEDP+6xAz/usQM/7rEDP+6xAz/usQO/7rEDP+6xA7/usQO/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8/AID/////AAAAgP////8AAACA/////wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z//////AAD/P/////8AAP8/AID/////AAAAgP////8AAACA/////wAA//8AgP9//n///wCA/3/+f///AID/f/5/")
-}]
+[ext_resource type="Texture2D" uid="uid://b3330kcuqy85c" path="res://items/paper/paper_text.jpg" id="6_bfwq2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6x0dg"]
 size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cljnc"]
+albedo_texture = ExtResource("6_bfwq2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bpvnt"]
+size = Vector2(0.4, 0.6)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bpvnt"]
+_surfaces = [{
+"aabb": AABB(-0.2, 0.05, -0.3, 0.4, 1e-05, 0.6),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAACAAEAAQACAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("zcxMPs3MTD2amZk+zcxMvs3MTD2amZk+zcxMPs3MTD2amZm+zcxMvs3MTD2amZm+AID//////78AgP//////vwCA//////+/AID//////78=")
+}]
 
 [node name="paper" type="RigidBody3D" groups=["interact"]]
 collision_layer = 2
 collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("1_bpvnt")
-paper_name = "paper_1"
 object_name = "paper_1"
-item_name = "paper_1"
 pickup_item = false
-
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_bfwq2")
-mesh = SubResource("ArrayMesh_cljnc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGBakedMeshInstance3D"]
-material_override = ExtResource("2_bpvnt")
-mesh = SubResource("ArrayMesh_q1ihy")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -62,8 +41,16 @@ shape = SubResource("BoxShape3D_6x0dg")
 
 [node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("3_ihec2")
-outline_mesh = NodePath("../CSGBakedMeshInstance3D/MeshInstance3D")
+outline_mesh = NodePath("../MeshInstance3D/MeshInstance3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_ihec2")
 bus = &"player"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135544, 0)
+material_override = SubResource("StandardMaterial3D_cljnc")
+mesh = SubResource("PlaneMesh_bpvnt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_bpvnt")

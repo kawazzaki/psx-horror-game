@@ -4,7 +4,7 @@ extends ITEM
 
 
 
-@onready var paper_ui : Control = self.get_tree().root.get_child(1).get_node("read")
+@onready var paper_ui : Control = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("read")
 
 
 

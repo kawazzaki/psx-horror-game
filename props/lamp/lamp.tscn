@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b231a0v8i38mi"]
+
+[ext_resource type="PackedScene" uid="uid://bs4282u137ary" path="res://props/lamp/model/low_poly_psx_wall_lamp.glb" id="1_7omg3"]
+[ext_resource type="Script" uid="uid://c212ignjs60m4" path="res://props/lamp/lamp.gd" id="1_aseqk"]
+
+[node name="lamp" type="Node3D"]
+script = ExtResource("1_aseqk")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_7omg3")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.478483)
+light_energy = 2.0
+omni_attenuation = 0.8

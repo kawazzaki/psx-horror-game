@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byymkiyjqc34n"]
 
-[ext_resource type="FontFile" uid="uid://dq1mbflug1buk" path="res://others/fonts/acknowtt.ttf" id="1_rjnft"]
+[ext_resource type="FontFile" uid="uid://bsvquo20ksgd2" path="res://others/fonts/Minecraft.ttf" id="1_rjnft"]
 [ext_resource type="Script" uid="uid://dha2c3s7ik7pa" path="res://ui/sub-title/sub_title.gd" id="1_tkulo"]
 
 [node name="sub-title" type="Label"]

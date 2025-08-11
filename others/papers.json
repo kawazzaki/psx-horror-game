@@ -13,6 +13,23 @@
   },
   "pc_password":{
     "title":"",
-    "content":"0000"
+    "content":"4390"
+  },
+  "password_indicator":{
+    "title":"",
+    "content":"Rectangle-Rhombus-Circle-Triangle"
+  },
+   "triangle":{
+    "title":"",
+    "content":"Triangle \n 0"
+  },
+   "rhombus":{
+    "title":"",
+    "content":"Rhombu \n 9"
+  }
+  ,
+   "circle":{
+    "title":"",
+    "content":"Circle \n 3"
   }
 }

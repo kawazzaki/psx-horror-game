@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv11knkn480w3"]
+
+[ext_resource type="Material" uid="uid://dldypadx2f7xc" path="res://others/events/event.tres" id="1_2gio3"]
+[ext_resource type="Script" uid="uid://donm42lwmxexj" path="res://others/events/event1/event_1.gd" id="1_obtxl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52k5u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_obtxl"]
+
+[node name="event1" type="Area3D"]
+script = ExtResource("1_obtxl")
+event_index = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_52k5u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_2gio3")
+mesh = SubResource("BoxMesh_obtxl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

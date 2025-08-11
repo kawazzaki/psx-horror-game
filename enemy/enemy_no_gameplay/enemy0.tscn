@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkoteowiolvtu"]
+
+[ext_resource type="Material" uid="uid://bms8ybdvbqxjv" path="res://enemy/enemy.tres" id="1_tb8bx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mntu"]
+size = Vector3(1.5, 3, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tb8bx"]
+size = Vector3(1.5, 3, 1.5)
+
+[node name="enemy" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989468, 0)
+shape = SubResource("BoxShape3D_6mntu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("1_tb8bx")
+mesh = SubResource("BoxMesh_tb8bx")

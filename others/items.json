@@ -14,6 +14,10 @@
   "screw_remover":{
     "scene_path":"res://items/screw_remover/screw_remover.tscn",
     "icon_path": "res://demo/PNG/Green/texture_02.png"
-  }
+  },
+  "rhombus": {
+    "scene_path": "res://items/paper/paper.tscn",
+    "icon_path": "res://demo/PNG/Green/texture_02.png"
+  },
   
 }

@@ -32,6 +32,7 @@ func change_texture(tex : Texture):
 func interact():
 	if(first_time == true):
 		pc_ui.visible = true;
+		pc_ui.get_node("codeInput").text = ""
 		Global.toggle_mouse();
 	pass
 

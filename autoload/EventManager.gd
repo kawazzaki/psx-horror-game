@@ -13,3 +13,4 @@ func complete_event(index: int):
 	if index == current_event_index:
 		events_done.append(index)
 		current_event_index += 1
+		print("the current event index : ",current_event_index)

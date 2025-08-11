@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt6beskohu641"]
+
+[ext_resource type="Script" uid="uid://b17onbjuip85" path="res://others/events/event2/event_2.gd" id="1_oi4j2"]
+[ext_resource type="Material" uid="uid://dldypadx2f7xc" path="res://others/events/event.tres" id="2_8eaw7"]
+[ext_resource type="PackedScene" uid="uid://dkoteowiolvtu" path="res://enemy/enemy_no_gameplay/enemy0.tscn" id="3_0sc31"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52k5u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_obtxl"]
+
+[sub_resource type="Animation" id="Animation_gtbrf"]
+resource_name = "event"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.72789, -0.206634, -3.14232), Vector3(4.44169, -0.0956633, -3.14232)]
+}
+
+[sub_resource type="Animation" id="Animation_6pwyo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.72789, -1.06666, -3.14232)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80qfb"]
+_data = {
+&"RESET": SubResource("Animation_6pwyo"),
+&"event": SubResource("Animation_gtbrf")
+}
+
+[node name="event2" type="Area3D"]
+script = ExtResource("1_oi4j2")
+event_index = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_52k5u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_8eaw7")
+mesh = SubResource("BoxMesh_obtxl")
+
+[node name="enemy" parent="." instance=ExtResource("3_0sc31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72789, -1.06666, -3.14232)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_80qfb")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
