@@ -6,5 +6,6 @@
 - Lobby — 80% complete  
 - Forest — 40% complete  
 - Inventory system — 80% complete  
-- Read system  
+- Read system
+- door system
 - Effects (glitch, cfr, pixel)
