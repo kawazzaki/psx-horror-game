@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://bci8cy7a4rnfe"]
+[gd_scene load_steps=13 format=4 uid="uid://bci8cy7a4rnfe"]
 
 [ext_resource type="Texture2D" uid="uid://buotan8dd5752" path="res://props/storages/storage1/model/storage1_door_wooden.png" id="1_cq3y3"]
 [ext_resource type="Script" uid="uid://d15pusn2gkybg" path="res://props/doors/door.gd" id="1_djjag"]
 [ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="2_rbon6"]
 [ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_rvoib"]
 [ext_resource type="Texture2D" uid="uid://dqe7fcyaof2y7" path="res://props/storages/storage1/model/storage1_door_images.jpg" id="5_55sxm"]
+[ext_resource type="AudioStream" uid="uid://cu6h2xarmcc4j" path="res://sounds/door-opening-353874.mp3" id="6_r3hcq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq3y3"]
 size = Vector3(0.0942993, 1.18414, 1.69812)
@@ -114,3 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0224494)
 material_override = ExtResource("2_rbon6")
 mesh = SubResource("ArrayMesh_rvoib")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_r3hcq")
+bus = &"player"
