@@ -28,9 +28,11 @@ func change_camera(new_cam : Camera3D):
 	my_camera.current = true;
 	if(new_cam != null):
 		tween.tween_property(my_camera,"global_position",new_cam.global_position,0.5);
+		tween.tween_property(my_camera,"global_rotation",new_cam.global_rotation,0.5);
 		tween.finished.connect(func(): _on_tween_finished(new_cam)) # works in latest Godot
 	else:
 		tween.tween_property(my_camera,"global_position",player_camera.global_position,0.5);
+		tween.tween_property(my_camera,"global_rotation",player_camera.global_rotation,0.5);
 		tween.finished.connect(func(): _on_tween_finished(player_camera)) # works in latest Godot
 	
 

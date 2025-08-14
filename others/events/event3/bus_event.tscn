@@ -91,7 +91,7 @@ albedo_color = Color(1, 0.337255, 1, 0.113725)
 
 [node name="bus_event" type="Area3D"]
 script = ExtResource("1_h62a0")
-event_index = 4
+event_index = 5
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_8itct")]
 transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 28.8305, 1.53209, 6.92909)

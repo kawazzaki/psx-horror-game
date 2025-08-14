@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://be21u5xelqw24"]
+
+[ext_resource type="Script" uid="uid://v4dnjp4ogyck" path="res://others/events/event2.5/door_open_event.gd" id="1_118a6"]
+[ext_resource type="AudioStream" uid="uid://db5sy7lbbucfo" path="res://sounds/avoid-horror-268576.mp3" id="2_alh5x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_118a6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_118a6"]
+size = Vector3(24.3622, 1, 1)
+
+[node name="door_open_event" type="Area3D"]
+script = ExtResource("1_118a6")
+event_index = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(22.0475, 0, 0, 0, 1, 0, 0, 0, 1, 2.00023, 0, 0)
+mesh = SubResource("BoxMesh_118a6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31439, 0, 0)
+shape = SubResource("BoxShape3D_118a6")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_alh5x")
+bus = &"player"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpv2neigc24sq"]
+[gd_scene load_steps=33 format=3 uid="uid://cpv2neigc24sq"]
 
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
 [ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://autoload/global.gd" id="1_onvmd"]
 [ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
 [ext_resource type="PackedScene" uid="uid://byymkiyjqc34n" path="res://ui/sub-title/sub_title.tscn" id="2_1rqa4"]
 [ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="3_ykvhj"]
-[ext_resource type="Shader" uid="uid://5txyg0nahgpw" path="res://effects/pixelaze/pixel.gdshader" id="8_onvmd"]
+[ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="7_p1aj5"]
 [ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="10_1rqa4"]
 [ext_resource type="PackedScene" uid="uid://bkb21owl1u40i" path="res://envirenement/lobby/model/lobby.glb" id="10_ykvhj"]
 [ext_resource type="PackedScene" uid="uid://bci720gpllgkg" path="res://ui/pc/pc_ui.tscn" id="11_1rqa4"]
@@ -27,20 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://cbndxmh05mpv6" path="res://envirenement/forest/forest.tscn" id="24_8rfdr"]
 [ext_resource type="PackedScene" uid="uid://bivl8x8q7x2y2" path="res://others/events/event4/enemy_spawn_event.tscn" id="27_1d2gs"]
 [ext_resource type="PackedScene" uid="uid://b2d0wyqwf3bpo" path="res://others/events/event3/bus_event.tscn" id="27_p1aj5"]
+[ext_resource type="PackedScene" uid="uid://be21u5xelqw24" path="res://others/events/event2.5/door_open_event.tscn" id="28_1d2gs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oeqrt"]
-shader = ExtResource("8_onvmd")
-shader_parameter/shake = 0.015
-shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.2
-shader_parameter/pixelSize = 446.592
-shader_parameter/grainIntensity = 0.04
-shader_parameter/use_overlay = false
-shader_parameter/use_lens_distortion = true
-shader_parameter/overlay_color = Color(1, 1, 1, 10)
-shader_parameter/lens_distortion_strength = 0.0
+shader = ExtResource("7_p1aj5")
+shader_parameter/brightnessMult = 1.0
+shader_parameter/wiggleMult = 0.005
+shader_parameter/chromaticAberrationOffset = 0.001
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
 
@@ -52,6 +45,15 @@ size = Vector3(1, 1, 3.0813)
 
 [node name="demo" type="Node3D"]
 script = ExtResource("1_onvmd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oeqrt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(0.998237, 0.0593586, 0, -0.0593586, 0.998237, 0, 0, 0, 1, 5.58034, 2.65578, -14.3243)
@@ -73,18 +75,8 @@ machine = NodePath("../props/machine")
 [node name="read" parent="." instance=ExtResource("3_ykvhj")]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_oeqrt")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="player" parent="." instance=ExtResource("1_d6po2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77452, 1.73734, -3.45286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46434, 1.73734, -1.12858)
 visible = false
 
 [node name="collisions" type="StaticBody3D" parent="."]
@@ -144,6 +136,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4954, -1.24065, 10.829)
 [node name="event2" parent="events" instance=ExtResource("18_d1m6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6665, -1.26837, 1.04989)
 
+[node name="bus_event" parent="events" instance=ExtResource("27_p1aj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2068, -1.73734, 210.202)
+
+[node name="enemy_spawn_event" parent="events" instance=ExtResource("27_1d2gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7778, -1.05626, 93.9126)
+
+[node name="door_open_event" parent="events" node_paths=PackedStringArray("door") instance=ExtResource("28_1d2gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8519, -1.73734, 84.8734)
+door = NodePath("../../door2")
+
 [node name="papers" type="Node3D" parent="."]
 
 [node name="paper" parent="papers" instance=ExtResource("19_k1rqu")]
@@ -177,8 +179,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2274, 0, 179.691)
 [node name="forest" parent="." instance=ExtResource("24_8rfdr")]
 transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, 42.032, -0.025, 167.589)
 
-[node name="bus_event" parent="." instance=ExtResource("27_p1aj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.023, 0, 207.017)
+[node name="door2" parent="." instance=ExtResource("22_qvfii")]
+transform = Transform3D(-4.37114e-08, 0, -1.28339, 0, 0.884891, 0, 1, 0, -5.60987e-08, 41.9288, 1.42789, 98.6971)
+variation_angle = 90.0
 
-[node name="enemy_spawn_event" parent="." instance=ExtResource("27_1d2gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.594, 0.681082, 90.7273)
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 26.6083)
+spot_range = 10.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 37.1939)
+spot_range = 10.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 47.9964)
+spot_range = 10.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 59.9388)
+spot_range = 10.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 72.3857)
+spot_range = 10.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 84.3219)
+spot_range = 10.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40.9472, 3.64278, 98.208)
+spot_range = 10.0
