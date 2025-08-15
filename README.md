@@ -8,4 +8,6 @@
 - Inventory system — 80% complete  
 - Read system
 - door system
+- event system
+- camera changer
 - Effects (glitch, cfr, pixel)
