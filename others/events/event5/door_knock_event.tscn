@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqfi7y5vakdff"]
+
+[ext_resource type="Script" uid="uid://ctvaj05jcwai6" path="res://others/events/event5/door_knock_event.gd" id="1_ceswb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceswb"]
+shading_mode = 0
+albedo_color = Color(1, 0.34902, 0.309804, 0.27451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ceswb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ceswb"]
+size = Vector3(2.02686, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kkiv3"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jrq7q"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="Animation" id="Animation_ceswb"]
+resource_name = "event"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"turn_camera"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkiv3"]
+_data = {
+&"event": SubResource("Animation_ceswb")
+}
+
+[node name="door_knock_event" type="Area3D"]
+script = ExtResource("1_ceswb")
+event_index = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.99258, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536923, -0.429539, 0)
+material_override = SubResource("StandardMaterial3D_ceswb")
+mesh = SubResource("BoxMesh_ceswb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0437012, -0.438548, 0)
+shape = SubResource("BoxShape3D_ceswb")
+
+[node name="character" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90888, 0, -0.550117)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="character"]
+shape = SubResource("BoxShape3D_kkiv3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="character"]
+mesh = SubResource("BoxMesh_jrq7q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.34398, 0.518731, -0.551282)
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kkiv3")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

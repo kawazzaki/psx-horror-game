@@ -1,6 +1,6 @@
 extends Node
 
-@export var current_event_index: int = 0
+@export var current_event_index: int = 7
 var events_done: Array = []      
 
 func start_event(index: int) -> bool:
