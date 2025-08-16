@@ -21,6 +21,7 @@ Global="*res://autoload/global.gd"
 EventManager="*res://autoload/EventManager.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 Camera="*res://autoload/camera.gd"
+Dialog="*res://autoload/dialog.gd"
 
 [display]
 

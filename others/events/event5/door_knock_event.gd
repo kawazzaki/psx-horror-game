@@ -13,6 +13,7 @@ func _on_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.
 
 func interact():
+	enable_event()
 	$animation.play("event");
 	EventManager.complete_event(event_index)
 	pass
@@ -39,8 +40,14 @@ func enable_event(layer := 1, mask := 1):
 	$character.collision_mask = mask
 
 func turn_camera():
-	Camera.change_camera($Camera3D)
+	Camera.change_camera($Camera3D,0.1)
 	pass
 func turn_camera_to_player():
 	Camera.change_camera(null)
 	pass
+
+
+func start_dialog(dialog : String):
+	Dialog.dialog_ui.start_dialog(dialog);
+	pass
+	

@@ -17,7 +17,7 @@ func _ready():
 	# Add it to the scene
 	add_child(my_camera)
 
-func change_camera(new_cam : Camera3D):
+func change_camera(new_cam : Camera3D , time := 0.5):
 	var tween = get_tree().create_tween()
 	if(new_cam != null):
 		my_camera.global_position = player_camera.global_position;
@@ -27,12 +27,12 @@ func change_camera(new_cam : Camera3D):
 	
 	my_camera.current = true;
 	if(new_cam != null):
-		tween.tween_property(my_camera,"global_position",new_cam.global_position,0.5);
-		tween.tween_property(my_camera,"global_rotation",new_cam.global_rotation,0.5);
+		tween.tween_property(my_camera,"global_position",new_cam.global_position,time);
+		tween.tween_property(my_camera,"global_rotation",new_cam.global_rotation,time);
 		tween.finished.connect(func(): _on_tween_finished(new_cam)) # works in latest Godot
 	else:
-		tween.tween_property(my_camera,"global_position",player_camera.global_position,0.5);
-		tween.tween_property(my_camera,"global_rotation",player_camera.global_rotation,0.5);
+		tween.tween_property(my_camera,"global_position",player_camera.global_position,time);
+		tween.tween_property(my_camera,"global_rotation",player_camera.global_rotation,time);
 		tween.finished.connect(func(): _on_tween_finished(player_camera)) # works in latest Godot
 	
 

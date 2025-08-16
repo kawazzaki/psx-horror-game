@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://dkoteowiolvtu"]
+[gd_scene load_steps=23 format=4 uid="uid://dkoteowiolvtu"]
 
 [ext_resource type="Material" uid="uid://pkjwdj4crvvf" path="res://effects/glitch/glitch_mat.tres" id="1_tb8bx"]
 [ext_resource type="AudioStream" uid="uid://ckqfr3eq31eif" path="res://sounds/monster-footsteps-01-82898.mp3" id="2_iddfk"]
+[ext_resource type="Script" uid="uid://bk5idtjoctwy6" path="res://enemy/scritps/enemy_sense.gd" id="3_cckn2"]
+[ext_resource type="AudioStream" uid="uid://4oteslmfw1c0" path="res://sounds/creepy-tension-211814.mp3" id="4_gltr4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6mntu"]
 size = Vector3(1.5, 3, 1.5)
@@ -2110,6 +2112,16 @@ _data = {
 &"metarig|Walk": SubResource("Animation_dhgwd")
 }
 
+[sub_resource type="Curve" id="Curve_cckn2"]
+_limits = [1.0, 10.0, 0.0, 20.0]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(20, 1), 0.284569, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gltr4"]
+_limits = [0.5, 2.0, 0.0, 20.0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(20, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="enemy" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -2117,6 +2129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989468, 0)
 shape = SubResource("BoxShape3D_6mntu")
 
 [node name="Sketchfab_Scene2" type="Node3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="Sketchfab_model" type="Node3D" parent="Sketchfab_Scene2"]
 transform = Transform3D(1.58969, 0, 0, 0, 3.52983e-16, 1.58969, 0, -1.58969, 3.52983e-16, 0, 0, 0)
@@ -2475,3 +2488,12 @@ libraries = {
 autoplay = "Idle"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="player_sense" type="Node3D" parent="."]
+script = ExtResource("3_cckn2")
+CAO_curve = SubResource("Curve_cckn2")
+BM_curve = SubResource("Curve_gltr4")
+
+[node name="sense_sfx" type="AudioStreamPlayer3D" parent="player_sense"]
+stream = ExtResource("4_gltr4")
+max_distance = 20.0

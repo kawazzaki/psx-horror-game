@@ -1,0 +1,10 @@
+[
+    {"Player:Wha–... What was that?! I just saw... a ghost?!"},
+    {"Stranger : A ghost? Here? You look pale as snow."},
+    {"Player : It was right there... staring at me..."},
+    {"Stranger : Calm down. You shouldn’t be wandering outside like this."},
+    {"Stranger : Come, stay in my house tonight. It’s safer inside."},
+    {"Player : ... Are you sure?"},
+    {"Stranger: Yes. I’ve dealt with worse than ghosts."}
+    {"Stranger :just kidding..hh"}
+]

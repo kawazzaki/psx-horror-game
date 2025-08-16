@@ -19,7 +19,7 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="Animation" id="Animation_ceswb"]
 resource_name = "event"
-length = 10.0
+length = 30.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,11 +27,34 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 5.7, 15.1667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"turn_camera"
+}, {
+"args": ["\"Stranger : A ghost? Here? You look pale as snow.\""],
+"method": &"start_dialog"
+}, {
+"args": [""],
+"method": &"start_dialog"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.83333, 9.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["\"Player:Wha–... What was that?! I just saw... a ghost?!\""],
+"method": &"start_dialog"
+}, {
+"args": ["\"Player : It was right there... staring at me...\""],
+"method": &"start_dialog"
 }]
 }
 
