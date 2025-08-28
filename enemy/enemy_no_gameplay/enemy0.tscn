@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://dkoteowiolvtu"]
+[gd_scene load_steps=22 format=4 uid="uid://dkoteowiolvtu"]
 
 [ext_resource type="Material" uid="uid://pkjwdj4crvvf" path="res://effects/glitch/glitch_mat.tres" id="1_tb8bx"]
 [ext_resource type="AudioStream" uid="uid://ckqfr3eq31eif" path="res://sounds/monster-footsteps-01-82898.mp3" id="2_iddfk"]
 [ext_resource type="Script" uid="uid://bk5idtjoctwy6" path="res://enemy/scritps/enemy_sense.gd" id="3_cckn2"]
-[ext_resource type="AudioStream" uid="uid://4oteslmfw1c0" path="res://sounds/creepy-tension-211814.mp3" id="4_gltr4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6mntu"]
 size = Vector3(1.5, 3, 1.5)
@@ -2493,7 +2492,3 @@ autoplay = "Idle"
 script = ExtResource("3_cckn2")
 CAO_curve = SubResource("Curve_cckn2")
 BM_curve = SubResource("Curve_gltr4")
-
-[node name="sense_sfx" type="AudioStreamPlayer3D" parent="player_sense"]
-stream = ExtResource("4_gltr4")
-max_distance = 20.0

@@ -13,8 +13,9 @@ func get_distance_to_player():
 
 func _process(delta: float) -> void:
 	if(get_parent().visible == true):
-		sfx.play()
+		#sfx.play()
 		cfr.change_chromaticAberrationOffset(CAO_curve.sample(get_distance_to_player()) * 0.001)
 		cfr.change_brightnessMult(BM_curve.sample(get_distance_to_player()))
 	else:
-		sfx.stop()
+		cfr.change_chromaticAberrationOffset(0.001)
+		cfr.change_brightnessMult(2)
