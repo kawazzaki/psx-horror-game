@@ -19,3 +19,5 @@
 ->remove old event system
 
 ->remove the old forest place
+
+->remove outline from interact object
