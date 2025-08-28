@@ -11,3 +11,7 @@
 - event system
 - camera changer
 - Effects (glitch, cfr, pixel)
+
+**Mark**
+->remove the old enemy idea(3d model) x2
+->remove old event system
