@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca00dc7c3o7pe"]
+
+[ext_resource type="Script" uid="uid://b7sppgi4v0na4" path="res://others/events/event_R4/r4_event.gd" id="1_x0ecd"]
+[ext_resource type="Shader" uid="uid://p5ewo2k0d4s1" path="res://effects/dissolve/dissolve.gdshader" id="2_nsp45"]
+[ext_resource type="Texture2D" uid="uid://dxbow06dclflw" path="res://effects/dissolve/images.jpg" id="3_bx7wq"]
+[ext_resource type="Texture2D" uid="uid://csrbl5rr3f654" path="res://others/events/event_R4/symbol.png" id="4_0yvxy"]
+[ext_resource type="AudioStream" uid="uid://nbh6dlufbe5k" path="res://sounds/fire-whoosh-85834.mp3" id="5_m0e6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ihnu"]
+size = Vector3(3.97809, 2.52722, 2.65222)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvfii"]
+render_priority = 0
+shader = ExtResource("2_nsp45")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_0yvxy")
+shader_parameter/emission_color = Color(1, 1, 0.227451, 1)
+shader_parameter/emission_amount = 0.5
+shader_parameter/dissolve_texture = ExtResource("3_bx7wq")
+shader_parameter/burn_size = 0.1
+shader_parameter/dissolve_amount = 0.653
+
+[sub_resource type="Animation" id="Animation_mosls"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_6ihnu"]
+resource_name = "event"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.09,
+"stream": ExtResource("5_m0e6r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 2.53333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"tween_play1"
+}, {
+"args": [],
+"method": &"tween_play2"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mosls"]
+_data = {
+&"RESET": SubResource("Animation_mosls"),
+&"event": SubResource("Animation_6ihnu")
+}
+
+[node name="r4_event" type="Area3D" node_paths=PackedStringArray("sprite", "audioplayer")]
+script = ExtResource("1_x0ecd")
+sprite = NodePath("Sprite3D")
+audioplayer = NodePath("AudioStreamPlayer3D")
+succesive_event = "Disabled"
+metadata/_custom_type_script = "uid://dxfyqxiw2dxkh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202484, 0.763611, 0.0722046)
+shape = SubResource("BoxShape3D_6ihnu")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.971772, -0.235922, 0, 0.235922, 0.971772, 0, 0, 0, 1, 0, 2.27777, -3.60421)
+material_override = SubResource("ShaderMaterial_qvfii")
+texture = ExtResource("4_0yvxy")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"player"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mosls")
+}

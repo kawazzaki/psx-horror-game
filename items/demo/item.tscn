@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://cdb5tgh0so57"]
+[gd_scene load_steps=8 format=4 uid="uid://cdb5tgh0so57"]
 
 [ext_resource type="Texture2D" uid="uid://bmp6rlhg010x6" path="res://demo/PNG/Light/texture_03.png" id="1_31kim"]
 [ext_resource type="Script" uid="uid://c11vgqrlcbvgw" path="res://items/demo/item.gd" id="1_mrgaa"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="2_ayiq1"]
 [ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="2_mrgaa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayiq1"]
@@ -50,9 +49,5 @@ mesh = SubResource("ArrayMesh_1qt76")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ayiq1")
-
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("2_ayiq1")
-outline_mesh = NodePath("../CSGBakedMeshInstance3D/MeshInstance3D")
 
 [node name="ground_checker" type="RayCast3D" parent="."]

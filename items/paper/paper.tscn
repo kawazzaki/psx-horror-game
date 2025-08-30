@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://dnxfh6poxvhdc"]
+[gd_scene load_steps=8 format=3 uid="uid://dnxfh6poxvhdc"]
 
 [ext_resource type="Script" uid="uid://c48aftbigx4bi" path="res://items/paper/paper.gd" id="1_bpvnt"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_ihec2"]
+[ext_resource type="PackedScene" uid="uid://dw8l5gixusigt" path="res://others/interact_indicator/interact_indicator.tscn" id="4_bpvnt"]
 [ext_resource type="AudioStream" uid="uid://b4c3w1nm8wr05" path="res://sounds/paper.mp3" id="5_ihec2"]
 [ext_resource type="Texture2D" uid="uid://b3330kcuqy85c" path="res://items/paper/paper_text.jpg" id="6_bfwq2"]
 
@@ -17,34 +17,18 @@ grow_amount = 0.229
 [sub_resource type="PlaneMesh" id="PlaneMesh_bpvnt"]
 size = Vector2(0.4, 0.6)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_bpvnt"]
-_surfaces = [{
-"aabb": AABB(-0.2, 0.05, -0.3, 0.4, 1e-05, 0.6),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAA="),
-"format": 34359742487,
-"index_count": 6,
-"index_data": PackedByteArray("AAACAAEAAQACAAMA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("zcxMPs3MTD2amZk+zcxMvs3MTD2amZk+zcxMPs3MTD2amZm+zcxMvs3MTD2amZm+AID//////78AgP//////vwCA//////+/AID//////78=")
-}]
-
-[node name="paper" type="RigidBody3D" groups=["interact"]]
+[node name="paper" type="RigidBody3D" node_paths=PackedStringArray("press_indicator") groups=["interact"]]
 collision_layer = 2
 collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("1_bpvnt")
 object_name = "paper_1"
 pickup_item = false
+press_indicator = NodePath("interact_indicator")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("BoxShape3D_6x0dg")
-
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("3_ihec2")
-outline_mesh = NodePath("../MeshInstance3D/MeshInstance3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_ihec2")
@@ -55,5 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135544, 0)
 material_override = SubResource("StandardMaterial3D_cljnc")
 mesh = SubResource("PlaneMesh_bpvnt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-mesh = SubResource("ArrayMesh_bpvnt")
+[node name="interact_indicator" parent="." instance=ExtResource("4_bpvnt")]
+transform = Transform3D(1, 0, 0, 0, 0.368303, 0.929706, 0, -0.929706, 0.368303, 0, 0, 0)
+pixel_size = 0.0015

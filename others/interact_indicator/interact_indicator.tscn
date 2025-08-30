@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw8l5gixusigt"]
+
+[ext_resource type="Texture2D" uid="uid://1fgky8g5rxkm" path="res://icon.svg" id="1_7y8gl"]
+[ext_resource type="Script" uid="uid://caw3ee4e0nr1l" path="res://others/interact_indicator/interact_indicator.gd" id="2_keari"]
+
+[node name="interact_indicator" type="Sprite3D"]
+pixel_size = 0.005
+texture = ExtResource("1_7y8gl")
+script = ExtResource("2_keari")

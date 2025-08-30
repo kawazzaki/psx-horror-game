@@ -1,8 +1,10 @@
 [gd_resource type="Environment" format=3 uid="uid://ddqc6ffxh0lpf"]
 
 [resource]
+tonemap_mode = 2
+ssil_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_albedo = Color(0.23057, 4.32214e-05, 0.236897, 1)

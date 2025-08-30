@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends interact_object
 
 @export var object_name : String;
 
@@ -14,9 +14,14 @@ var material : StandardMaterial3D;
 @export var blast_door : Node3D;
 
 var first_time = true;
+
+
 func _ready() -> void:
 	var mesh : MeshInstance3D = $MeshInstance3D;
 	material  = mesh.material_override;
+
+
+
 
 
 func open_the_blast_door():

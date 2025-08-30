@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends interact_object
 
 @export var object_name : String;
 
@@ -6,6 +6,11 @@ extends StaticBody3D
 @export var pickup_item : bool =false; # necessery
 var isclosed = true;
 @export var open_distance :float
+
+
+
+
+
 
 
 

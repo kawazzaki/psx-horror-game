@@ -1,33 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://bsf1hpfcc0egi"]
+[gd_scene load_steps=6 format=3 uid="uid://bsf1hpfcc0egi"]
 
 [ext_resource type="Script" uid="uid://d15pusn2gkybg" path="res://props/doors/door.gd" id="1_8o3ph"]
 [ext_resource type="PackedScene" uid="uid://dimkqernlirj2" path="res://props/doors/model/door.gltf.glb" id="3_38qra"]
-[ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="3_niran"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="4_rymsu"]
+[ext_resource type="PackedScene" uid="uid://dw8l5gixusigt" path="res://others/interact_indicator/interact_indicator.tscn" id="4_38qra"]
 [ext_resource type="AudioStream" uid="uid://cu6h2xarmcc4j" path="res://sounds/door-opening-353874.mp3" id="5_uy0qp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_moked"]
 size = Vector3(0.279, 3.96106, 1.94934)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hhpkv"]
-_surfaces = [{
-"aabb": AABB(-0.114434, -1.26443, -0.514434, 0.228868, 2.52887, 1.02887),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAACAAEAAwAFAAQABgAIAAcACQALAAoADAAOAA0ADwARABAAEgAUABMAFQAXABYAGAAaABkAGwAdABwAHgAgAB8AIQAjACIA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("P1zqvffYob/usQM/P1zqvffYob/usQO/P1zqvffYoT/usQO/P1zqPffYob/usQO/P1zqvffYob/usQO/P1zqvffYob/usQM/P1zqvffYoT/usQO/P1zqvffYob/usQO/P1zqPffYob/usQO/P1zqvffYoT/usQO/P1zqvffYoT/usQM/P1zqvffYob/usQM/P1zqvffYob/usQM/P1zqvffYoT/usQM/P1zqPffYoT/usQM/P1zqPffYoT/usQM/P1zqvffYoT/usQM/P1zqvffYoT/usQO/P1zqvffYob/usQM/P1zqPffYob/usQM/P1zqPffYob/usQO/P1zqPffYoT/usQM/P1zqPffYob/usQM/P1zqvffYob/usQM/P1zqPffYob/usQO/P1zqPffYob/usQM/P1zqPffYoT/usQM/P1zqPffYob/usQO/P1zqPffYoT/usQO/P1zqvffYoT/usQO/P1zqvffYoT/usQO/P1zqPffYoT/usQO/P1zqPffYoT/usQM/P1zqPffYoT/usQM/P1zqPffYoT/usQO/P1zqPffYob/usQO/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8/AID/////AAAAgP////8AAACA/////wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z//////AAD/P/////8AAP8/AID/////AAAAgP////8AAACA/////wAA//8AgP9//n///wCA/3/+f///AID/f/5/")
-}]
-
-[node name="door" type="StaticBody3D" groups=["door", "interact"]]
+[node name="door" type="StaticBody3D" node_paths=PackedStringArray("press_indicator") groups=["door", "interact"]]
 collision_layer = 2
 script = ExtResource("1_8o3ph")
 object_name = "door"
 key_name = "key1"
 variation_angle = -90.0
+press_indicator = NodePath("interact_indicator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050354, -0.00506592, 0.942394)
@@ -36,16 +23,9 @@ shape = SubResource("BoxShape3D_moked")
 [node name="door_gltf" parent="." instance=ExtResource("3_38qra")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.949496)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door_gltf"]
-transform = Transform3D(-5.70874e-08, 0, -1.95901, 0, 1.64781, 0, 1, 0, -6.55671e-08, -0.00164586, 0, -5.50848e-11)
-visible = false
-material_override = ExtResource("3_niran")
-mesh = SubResource("ArrayMesh_hhpkv")
-skeleton = NodePath("")
-
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("4_rymsu")
-outline_mesh = NodePath("../door_gltf/MeshInstance3D")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_uy0qp")
+bus = &"player"
+
+[node name="interact_indicator" parent="." instance=ExtResource("4_38qra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.389853, 0, 1.73176)

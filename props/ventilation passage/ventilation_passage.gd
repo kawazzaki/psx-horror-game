@@ -1,4 +1,4 @@
-extends Node3D
+extends interact_object
 
 @export var object_name : String;
 @export var pickup_item : bool =false; # necessery

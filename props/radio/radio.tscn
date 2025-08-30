@@ -1,36 +1,21 @@
-[gd_scene load_steps=9 format=4 uid="uid://bvmawe4sda4q"]
+[gd_scene load_steps=7 format=3 uid="uid://bvmawe4sda4q"]
 
 [ext_resource type="Script" uid="uid://dv1t3mukmd4oe" path="res://props/radio/radio.gd" id="1_4p81a"]
 [ext_resource type="PackedScene" uid="uid://cosqcwexpwbyr" path="res://props/radio/model/psx_vhs_player__tape.glb" id="1_hloss"]
 [ext_resource type="AudioStream" uid="uid://d1mnloapjixq6" path="res://sounds/tuning-radio-7150.mp3" id="2_4p81a"]
 [ext_resource type="AudioStream" uid="uid://ymdlby06n535" path="res://sounds/tv-off-39915.mp3" id="2_duuck"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="4_2j2o5"]
+[ext_resource type="PackedScene" uid="uid://dw8l5gixusigt" path="res://others/interact_indicator/interact_indicator.tscn" id="5_duuck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2j2o5"]
 size = Vector3(0.844482, 0.15358, 0.743896)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duuck"]
-shading_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_004i7"]
-_surfaces = [{
-"aabb": AABB(-0.358868, -0.259868, -0.0288675, 0.717735, 0.519735, 0.189735),
-"attribute_data": PackedByteArray("oawgPoYABjyQVpA+nGAcPaGsID6cYBw9kFaQPoYABjycKBw+j/YOP4z0Cz/8EPw+nCgcPvwQ/D6M9As/j/YOP5BWkD6GAAY8oawgPpxgHD2QVpA+nGAcPaGsID6GAAY8z/JOP6GwID2DQAM82MRXPs/yTj/YxFc+g0ADPKGwID3vgO48hnAGPpyQmz22bDY+nJCbPYZwBj7vgO48tmw2PphomD3U6lM/sOcvP4cbBz+h9CA/1P9TP8LAwTyHGAc/"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAACAAEAAAABAAMABAAGAAUABAAFAAcACAAKAAkACAAJAAsADAAOAA0ADAANAA8AEAASABEAEAARABMAFAAWABUAFAAVABcA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("fL23vlsNhb6Me+y8fL23vlsNhT50uiQ+fL23vlsNhb50uiQ+fL23vlsNhT6Me+y8fL23vlsNhT6Me+y8fL23PlsNhT50uiQ+fL23vlsNhT50uiQ+fL23PlsNhT6Me+y8fL23PlsNhT6Me+y8fL23PlsNhb50uiQ+fL23PlsNhT50uiQ+fL23PlsNhb6Me+y8fL23PlsNhb6Me+y8fL23vlsNhb50uiQ+fL23PlsNhb50uiQ+fL23vlsNhb6Me+y8fL23vlsNhT6Me+y8fL23PlsNhb6Me+y8fL23PlsNhT6Me+y8fL23vlsNhb6Me+y8fL23PlsNhT50uiQ+fL23vlsNhb50uiQ+fL23vlsNhT50uiQ+fL23PlsNhb50uiQ+AgAEgAGA/P8CAASAAYD8/wIABIABgPz/AgAEgAGA/P/8f/7//v//P/x//v/+//8//H/+//7//z/8f/7//v//P/r/AYD9fwIA+v8BgP1/AgD6/wGA/X8CAPr/AYD9fwIAAoAAAP7//z8CgAAA/v//PwKAAAD+//8/AoAAAP7//z8AAAAA//8AQAAAAAD//wBAAAAAAP//AEAAAAAA//8AQP5//n8AAP+//n/+fwwA+L/+f/5/GQDyv/5//n8AAP+/")
-}]
-
-[node name="radio" type="StaticBody3D" groups=["interact"]]
+[node name="radio" type="StaticBody3D" node_paths=PackedStringArray("press_indicator") groups=["interact"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_4p81a")
 object_name = "radio"
 turn_off_sound_fx = ExtResource("2_duuck")
+press_indicator = NodePath("interact_indicator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0155029, 0.0548935, 0.108032)
@@ -43,12 +28,6 @@ stream = ExtResource("2_4p81a")
 autoplay = true
 max_distance = 10.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.130904, 0)
-material_override = SubResource("StandardMaterial3D_duuck")
-mesh = SubResource("ArrayMesh_004i7")
-skeleton = NodePath("")
-
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("4_2j2o5")
-outline_mesh = NodePath("../MeshInstance3D")
+[node name="interact_indicator" parent="." instance=ExtResource("5_duuck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38315, 0.180586, 0.436269)
+pixel_size = 0.002

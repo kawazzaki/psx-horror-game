@@ -82,10 +82,10 @@ func show_paper(paper_id: String):
 @onready var aim_collider  = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player").aim_collider
 
 
-func subTitle():
-	if(!aim_collider):
-		sub_title.set_object_subTitle("")
-	pass
+#func subTitle():
+#	if(!aim_collider):
+#		sub_title.set_object_subTitle("")
+#	pass
 
 #check if player has an item
 func check_item_is_in_inventory(item_name: String):
@@ -94,8 +94,8 @@ func check_item_is_in_inventory(item_name: String):
 			return true
 	return false
 
-func _process(delta: float) -> void:
-	subTitle()
+#func _process(delta: float) -> void:
+#	subTitle()
 
 
 

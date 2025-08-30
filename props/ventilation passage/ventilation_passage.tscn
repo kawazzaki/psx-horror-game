@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://bpn0mudnll430"]
+[gd_scene load_steps=11 format=4 uid="uid://bpn0mudnll430"]
 
 [ext_resource type="Script" uid="uid://dviu5nql8i0gv" path="res://props/ventilation passage/ventilation_passage.gd" id="1_0oot2"]
 [ext_resource type="Texture2D" uid="uid://umcudgwdnp31" path="res://props/ventilation passage/model/ventilation passage_images.png" id="1_vjps7"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_qntbr"]
+[ext_resource type="PackedScene" uid="uid://dw8l5gixusigt" path="res://others/interact_indicator/interact_indicator.tscn" id="3_qntbr"]
 
 [sub_resource type="Animation" id="Animation_qntbr"]
 length = 0.001
@@ -107,22 +107,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_etr4o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0tsj"]
-shading_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_q1xwc"]
-_surfaces = [{
-"aabb": AABB(-1.02887, -1.02887, -1.02887, 2.05773, 2.05773, 2.05773),
-"attribute_data": PackedByteArray("+br4PoWahD6Nuww/yLhHPo27DD+FmoQ++br4Psi4Rz6MuIs9twI3P++Hbj+S+JE+jLiLPZL4kT7vh24/twI3P/m6+D6GQAY+jbsMP4qIiT2Nuww/hkAGPvm6+D6KiIk974duP7cCNz+MuIs9kviRPu+Hbj+S+JE+jLiLPbcCNz/Y/Nc+hkAGPvm6+D6KiIk9+br4PoZABj7Y/Nc+ioiJPY27DD+GQAY+nRodP4qIiT2dGh0/hkAGPo27DD+KiIk9"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAACAAEAAAABAAMABAAGAAUABAAFAAcACAAKAAkACAAJAAsADAAOAA0ADAANAA8AEAASABEAEAARABMAFAAWABUAFAAVABcA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("7rGDv+6xg7/usYM/7rGDv+6xgz/usYO/7rGDv+6xgz/usYM/7rGDv+6xg7/usYO/7rGDv+6xg7/usYO/7rGDP+6xgz/usYO/7rGDv+6xgz/usYO/7rGDP+6xg7/usYO/7rGDP+6xg7/usYO/7rGDP+6xgz/usYM/7rGDP+6xgz/usYO/7rGDP+6xg7/usYM/7rGDP+6xg7/usYM/7rGDv+6xgz/usYM/7rGDP+6xgz/usYM/7rGDv+6xg7/usYM/7rGDv+6xg7/usYO/7rGDP+6xg7/usYM/7rGDP+6xg7/usYO/7rGDv+6xg7/usYM/7rGDP+6xgz/usYO/7rGDv+6xgz/usYM/7rGDv+6xgz/usYO/7rGDP+6xgz/usYM/AgAEgAGA/P8CAASAAYD8/wIABIABgPz/AgAEgAGA/P8AAAAA//8AQAAAAAD//wBAAAAAAP//AEAAAAAA//8AQPr/AID+f/7/+v8AgP5//v/6/wCA/n/+//r/AID+f/7//X//f/3//7/9f/9//f//v/1//3/9//+//X//f/3//78AgAEA/v//vwCAAQD+//+/AIABAP7//78AgAEA/v//v/5//v8AAP6//n/+/wAA/r/+f/7/AAD+v/5//v8AAP6/")
-}]
-
 [node name="ventilation passage" type="Node3D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -130,12 +114,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_d0tsj")
 }
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interact"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("press_indicator") groups=["interact"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0oot2")
 object_name = "ventilation"
 interact_item = "screw_remover"
+press_indicator = NodePath("interact_indicator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 3.55271e-15, 1, -0.0098877, -0.00323486, 0.00317383)
@@ -146,10 +131,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.22045e-16, 8.88178e-16, 3.55271e-15, 0.
 mesh = SubResource("ArrayMesh_ai7gq")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Cube"]
-material_override = SubResource("StandardMaterial3D_d0tsj")
-mesh = SubResource("ArrayMesh_q1xwc")
-
-[node name="outline" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("3_qntbr")
-outline_mesh = NodePath("../Cube/MeshInstance3D")
+[node name="interact_indicator" parent="StaticBody3D" instance=ExtResource("3_qntbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40148, 0, -0.370562)

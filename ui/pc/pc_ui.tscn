@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bci720gpllgkg"]
+[gd_scene load_steps=10 format=3 uid="uid://bci720gpllgkg"]
 
 [ext_resource type="Texture2D" uid="uid://10de5k3m1dg2" path="res://ui/pc/ChatGPT Image 8 août 2025, 22_25_59.png" id="1_mw55y"]
 [ext_resource type="Script" uid="uid://bcguts3ag7me7" path="res://ui/pc/pc_ui.gd" id="1_pvpqv"]
+[ext_resource type="FontFile" uid="uid://bsvquo20ksgd2" path="res://others/fonts/Minecraft.ttf" id="3_im68u"]
 [ext_resource type="FontFile" uid="uid://dq1mbflug1buk" path="res://others/fonts/acknowtt.ttf" id="3_t8jgk"]
 [ext_resource type="AudioStream" uid="uid://ce0enu7r2xdcd" path="res://sounds/spacebar-click-keyboard-199448.mp3" id="4_vrpgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im68u"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw55y"]
 bg_color = Color(0.831373, 0.815686, 0.784314, 1)
@@ -12,6 +16,9 @@ bg_color = Color(0.831373, 0.815686, 0.784314, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_mw55y")
 Button/styles/hover = SubResource("StyleBoxFlat_mw55y")
 Button/styles/normal = SubResource("StyleBoxFlat_mw55y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guncd"]
+bg_color = Color(0.917647, 0.898039, 0.858824, 1)
 
 [node name="pc_ui" type="Control"]
 layout_mode = 3
@@ -45,16 +52,15 @@ grow_vertical = 2
 texture = ExtResource("1_mw55y")
 expand_mode = 1
 
-[node name="codeInput" type="TextEdit" parent="."]
+[node name="codeInput" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 458.0
 offset_top = 339.0
-offset_right = 807.0
-offset_bottom = 367.0
-theme_override_colors/background_color = Color(0.972549, 0.960784, 0.941176, 1)
+offset_right = 811.0
+offset_bottom = 366.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_t8jgk")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("3_im68u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_im68u")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -71,9 +77,13 @@ text = "ok
 
 [node name="btn_exit" type="Button" parent="."]
 layout_mode = 0
-offset_right = 129.0
-offset_bottom = 41.0
-text = "exit
+offset_left = 831.0
+offset_top = 150.0
+offset_right = 856.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_guncd")
+text = "X
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

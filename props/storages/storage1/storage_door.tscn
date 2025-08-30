@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://bci8cy7a4rnfe"]
+[gd_scene load_steps=11 format=4 uid="uid://bci8cy7a4rnfe"]
 
 [ext_resource type="Texture2D" uid="uid://buotan8dd5752" path="res://props/storages/storage1/model/storage1_door_wooden.png" id="1_cq3y3"]
 [ext_resource type="Script" uid="uid://d15pusn2gkybg" path="res://props/doors/door.gd" id="1_djjag"]
-[ext_resource type="Material" uid="uid://lgjf2avatnqb" path="res://effects/outline/outline.material" id="2_rbon6"]
-[ext_resource type="Script" uid="uid://b3v883ok2okre" path="res://effects/outline/outline.gd" id="3_rvoib"]
 [ext_resource type="Texture2D" uid="uid://dqe7fcyaof2y7" path="res://props/storages/storage1/model/storage1_door_images.jpg" id="5_55sxm"]
+[ext_resource type="PackedScene" uid="uid://dw8l5gixusigt" path="res://others/interact_indicator/interact_indicator.tscn" id="5_r3hcq"]
 [ext_resource type="AudioStream" uid="uid://cu6h2xarmcc4j" path="res://sounds/door-opening-353874.mp3" id="6_r3hcq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq3y3"]
@@ -78,44 +77,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d6vmt")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rvoib"]
-_surfaces = [{
-"aabb": AABB(-1.02887, -1.03536, -1.03536, 3.03158, 2.07071, 2.0707),
-"attribute_data": PackedByteArray("AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AAMA+AABAPwAAID8AAAA/AAAgPwAAQD8AAMA+AAAAPwAAID8AAIA+AADAPgAAgD4AAMA+AACAPgAAID8AAIA+AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAAAAAAA+AAAAPwAAwD4AAIA+AADAPgAAAD8AAAA+AACAPgAAID8AAAA/AABgPwAAgD4AAGA/AAAAPwAAID8AAIA+AADAPgAAAD8AACA/AACAPgAAID8AAAA/AADAPgAAgD4AAMA+AACAPgAAwD4AAAA/AADAPgAAAD8AAMA+AACAPgAAID8AAAA/AAAgPwAAgD4AACA/AACAPgAAID8AAAA/AADAPgAAAD8AACA/AAAAPwAAID8AAAA/AADAPgAAAD8="),
-"format": 34359742487,
-"index_count": 60,
-"index_data": PackedByteArray("AAACAAEAAAABAAMABAAGAAUABAAFAAcACAAKAAkACAAJAAsADAAOAA0ADAANAA8AEAASABEAEAARABMAFAAWABUAFAAVABcAGAAaABkAGAAZABsAHAAeAB0AHAAdAB8AIAAiACEAIAAhACMAJAAmACUAJAAlACcA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 40,
-"vertex_data": PackedByteArray("7rGDv+6xg7/usYM/7rGDv+6xgz/usYO/7rGDv+6xgz/usYM/7rGDv+6xg7/usYO/7rGDv+6xg7/usYO/FQCAP4aGhD+GhoS/7rGDv+6xgz/usYO/FQCAP4aGhL+GhoS/8C+APweGhD8HhoQ/sRkAQCvHfL92FX0/8C+APweGhL8HhoQ/sRkAQCzHfD92FX0/8C+APweGhL8HhoQ/7rGDv+6xgz/usYM/8C+APweGhD8HhoQ/7rGDv+6xg7/usYM/7rGDv+6xg7/usYO/8C+APweGhL8HhoQ/FQCAP4aGhL+GhoS/7rGDv+6xg7/usYM/FQCAP4aGhD+GhoS/7rGDv+6xgz/usYM/7rGDv+6xgz/usYO/8C+APweGhD8HhoQ/cywAQDbHfL8bxHy/sRkAQCzHfD92FX0/cywAQDfHfD8bxHy/sRkAQCvHfL92FX0/8C+APweGhL8HhoQ/cywAQDbHfL8bxHy/FQCAP4aGhL+GhoS/sRkAQCvHfL92FX0/FQCAP4aGhD+GhoS/sRkAQCzHfD92FX0/8C+APweGhD8HhoQ/cywAQDfHfD8bxHy/FQCAP4aGhL+GhoS/cywAQDfHfD8bxHy/FQCAP4aGhD+GhoS/cywAQDbHfL8bxHy/AAAAgACA//8AAACAAID//wAAAIAAgP//AAAAgACA////////AID///////8AgP///////wCA////////AID//xeF/3////8/F4X/f////z8Xhf9/////PxeF/3////8//3//fwCA////f/9/AID///9//38AgP///3//fwCA//8AgAAA////vwCAAAD///+/AIAAAP///78AgAAA////vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+///8AgACA/////wCAAID/////AIAAgP////8AgACA//8XhRYF////vxeFFgX///+/F4UWBf///78XhRYF////vxeF5/r///+/F4Xn+v///78Xhef6////vxeF5/r///+////n+v///7///+f6////v///5/r///+////n+v///78=")
-}]
-
-[node name="storage_door" type="StaticBody3D" groups=["interact"]]
+[node name="storage_door" type="StaticBody3D" node_paths=PackedStringArray("press_indicator") groups=["interact"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_djjag")
 object_name = "storage_door"
+press_indicator = NodePath("interact_indicator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122986, -0.00698853, 0.838848)
 shape = SubResource("BoxShape3D_cq3y3")
-
-[node name="outline" type="Node3D" parent="." node_paths=PackedStringArray("outline_mesh")]
-script = ExtResource("3_rvoib")
-outline_mesh = NodePath("../storeage_door2/MeshInstance3D")
 
 [node name="storeage_door2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0202658, 0, 0, 0, 0.59054, 0, 0, 0, 0.860896, 0, 0, 0.854818)
 mesh = SubResource("ArrayMesh_j88rc")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="storeage_door2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0224494)
-material_override = ExtResource("2_rbon6")
-mesh = SubResource("ArrayMesh_rvoib")
-skeleton = NodePath("")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_r3hcq")
 bus = &"player"
+
+[node name="interact_indicator" parent="." instance=ExtResource("5_r3hcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467553, 0, 1)

@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends interact_object
 
 
 @export var object_name : String;
