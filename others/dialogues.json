@@ -1,0 +1,39 @@
+{
+  "dialogs": {
+    "ali": [
+      {
+      "speaker": "Other Man",
+      "text": "I killed my brother… and this is the price."
+    },
+    {
+      "speaker": "Player",
+      "text": "W-What? What is this… why… why is he here?!"
+    },
+    {
+      "speaker": "Other Man",
+      "text": "Why was I cursed when he wasn't?"
+    }
+    ,
+    {
+      "speaker": "Other Man",
+      "text": "Everything happens for a reason… even death has its message."
+    },
+    {
+      "speaker": "Player",
+      "text": "No… this can't be real… you… you killed your brother!"
+    },
+    {
+      "speaker": "Other Man",
+      "text": "Yes… and everyone who enters this place will know fear… and you will feel what I felt."
+    },
+    {
+      "speaker": "Player",
+      "text": "I… I need to get out of here… I don’t want to end up like… him…"
+    },
+    {
+      "speaker": "Other Man",
+      "text": "Escape?! Now you are part of the game… and you won’t leave until you understand true fear."
+    },
+    ]
+  }
+}

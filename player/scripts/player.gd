@@ -49,22 +49,24 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	if(Global.player_can_move):
+	breathing_effect(delta)
+	
+	if Global.player_can_move:
 		_handle_input()
-		apply_gravity(delta)
-		move_and_slide()
-		breathing_effect(delta)
-		detect_interact_object()
-		update_footstep_timer()
-		print(standing_possibility())
-		slot_index = Global.check_if_inventory_full();
+	else:
+		velocity = Vector3.ZERO  # ← هنا نوقف الحركة
+
+	apply_gravity(delta)
+	move_and_slide()
+	detect_interact_object()
+	update_footstep_timer()
+	slot_index = Global.check_if_inventory_full()
 
 
 func _input(event):
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		swap_inventory_item()
-
 
 func _handle_input():
 	
@@ -107,6 +109,7 @@ func _handle_input():
 		dir += transform.basis.x
 
 	dir = dir.normalized()
+
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 

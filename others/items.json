@@ -18,6 +18,6 @@
   "rhombus": {
     "scene_path": "res://items/paper/paper.tscn",
     "icon_path": "res://demo/PNG/Green/texture_02.png"
-  },
+  }
   
 }

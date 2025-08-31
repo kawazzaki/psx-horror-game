@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5na2l1ohh3o7"]
+
+[ext_resource type="Shader" uid="uid://b6docplrfxlob" path="res://ui/dialog/wavy.gdshader" id="1_1bygs"]
+[ext_resource type="Script" uid="uid://dyx5wtc6ul2lr" path="res://ui/dialog/dialog.gd" id="1_xflr1"]
+[ext_resource type="FontFile" uid="uid://bsvquo20ksgd2" path="res://others/fonts/Minecraft.ttf" id="2_ifj3q"]
+[ext_resource type="AudioStream" uid="uid://likelo1oudj3" path="res://sounds/dialog_sound.wav" id="4_b7qic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifj3q"]
+shader = ExtResource("1_1bygs")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xflr1"]
+
+[node name="dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xflr1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -135.0
+offset_right = 271.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label0" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -126.0
+offset_right = -127.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ifj3q")
+text = "ali"
+
+[node name="Label1" type="Label" parent="."]
+material = SubResource("ShaderMaterial_ifj3q")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -104.0
+offset_right = 259.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ifj3q")
+text = "sdasfsasfasdasf"
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 596.0
+offset_right = 835.0
+offset_bottom = 630.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xflr1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b7qic")
+bus = &"player"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="1_d6po2"]
 [ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://autoload/global.gd" id="1_onvmd"]
 [ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="1_u10mr"]
-[ext_resource type="PackedScene" uid="uid://di4g8m4xrkxqu" path="res://ui/dialog/dialog_system.tscn" id="3_xam2y"]
 [ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="3_ykvhj"]
 [ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="7_p1aj5"]
 [ext_resource type="Script" uid="uid://ddk5887qo7erc" path="res://effects/crt/cfr.gd" id="9_p1aj5"]
@@ -23,7 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cb8pfagmgc7p6" path="res://envirenement/black_room/3d model/black_room.glb" id="22_vkopi"]
 [ext_resource type="Texture2D" uid="uid://d1lc78mttolwu" path="res://characters/ali/gfx/ali.png" id="23_6ihnu"]
 [ext_resource type="PackedScene" uid="uid://bxtj7u6dwqj0f" path="res://items/key/key.tscn" id="23_qvfii"]
-[ext_resource type="Environment" uid="uid://ddqc6ffxh0lpf" path="res://others/envi.tres" id="26_mosls"]
+[ext_resource type="PackedScene" uid="uid://c5na2l1ohh3o7" path="res://ui/dialog/dialog.tscn" id="24_8rfdr"]
+[ext_resource type="PackedScene" uid="uid://bkqvfbnuld8n5" path="res://others/events/dialog_event/dialog_event.tscn" id="25_6ihnu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oeqrt"]
 shader = ExtResource("7_p1aj5")
@@ -62,8 +62,6 @@ albedo_texture = ExtResource("23_6ihnu")
 
 [node name="demo" type="Node3D"]
 script = ExtResource("1_onvmd")
-
-[node name="dialog_system" parent="." instance=ExtResource("3_xam2y")]
 
 [node name="pc_ui" parent="." node_paths=PackedStringArray("machine") instance=ExtResource("11_1rqa4")]
 machine = NodePath("../props/machine")
@@ -181,6 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78115, 0.00104332)
 layers = 1024
 sorting_offset = 1.0
 material_override = SubResource("StandardMaterial3D_8rfdr")
+flip_h = true
 pixel_size = 0.003
 texture = ExtResource("23_6ihnu")
 
@@ -188,5 +187,10 @@ texture = ExtResource("23_6ihnu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04939, 0)
 shape = SubResource("CylinderShape3D_qvfii")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("26_mosls")
+[node name="dialog" parent="." instance=ExtResource("24_8rfdr")]
+visible = false
+
+[node name="dialog_event" parent="." instance=ExtResource("25_6ihnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8302, 0.181082, 14.8792)
+dialog_name = "ali"
+succesive_event = "Disabled"
