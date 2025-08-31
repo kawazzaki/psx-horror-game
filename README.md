@@ -6,7 +6,7 @@
 ## ✅ Finished Features
 - Player movement  
 - Lobby — **80% complete**  
-- ---Forest — **40% complete**  
+- ~~Forest — **40% complete**~~  
 - Inventory system — **80% complete**  
 - Read system  
 - Door system  
