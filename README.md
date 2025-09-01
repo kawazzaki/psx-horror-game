@@ -21,8 +21,8 @@
 - ❌ Remove old event system  
 - ❌ Remove the old forest place  
 - ❌ Remove outline from interactable objects
-- Add dialog system
-- create 2d characters
+- ⚡ Add dialog system
+- ⚡ create 2d characters
 
 ---
 #8ac09a
