@@ -1,5 +1,7 @@
 extends Node
 
+signal dialogue_finished
+
 # == Nodes ==
 @onready var dialog_ui = get_tree().root.get_child(get_tree().root.get_child_count() - 1).get_node("dialog")
 @onready var dialog_label = dialog_ui.get_node("Label1")
@@ -28,10 +30,13 @@ func load_dialogues():
 		var content = file.get_as_text()
 		dialogues = JSON.parse_string(content)   # Godot 4
 		file.close()
+		
+var current_dialogue_id = "" 
 
 func start_dialogue(dialogue_id: String):
 	if dialogues.has("dialogs") and dialogues["dialogs"].has(dialogue_id):
 		current_dialogue = dialogues["dialogs"][dialogue_id]
+		current_dialogue_id = dialogue_id
 		dialogue_index = 0
 		dialog_ui.visible = true
 		Global.toggle_mouse()
@@ -80,5 +85,8 @@ func end_dialogue():
 	speaker_label.text = ""
 	current_dialogue = []
 	dialogue_index = 0
+	#Camera.change_camera(null,0.25)
 	#Global.player_can_move = true
 	print("Dialogue finished!") 
+	emit_signal("dialogue_finished", current_dialogue_id)  # ← نرسل ID الحوار
+	current_dialogue_id = ""   # نرجعه فاضي

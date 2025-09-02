@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cumng7xvw0f1s"]
+
+[ext_resource type="Script" uid="uid://dhjug03g82how" path="res://characters/global/character.gd" id="1_3hco0"]
+[ext_resource type="Texture2D" uid="uid://d1lc78mttolwu" path="res://characters/ali/gfx/ali.png" id="2_h62bn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rfdr"]
+transparency = 1
+cull_mode = 1
+albedo_texture = ExtResource("2_h62bn")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qvfii"]
+
+[node name="ali" type="StaticBody3D"]
+script = ExtResource("1_3hco0")
+metadata/_custom_type_script = "uid://dhjug03g82how"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78115, 0.00104332)
+layers = 1024
+sorting_offset = 1.0
+material_override = SubResource("StandardMaterial3D_8rfdr")
+flip_h = true
+pixel_size = 0.003
+texture = ExtResource("2_h62bn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04939, 0)
+shape = SubResource("CylinderShape3D_qvfii")

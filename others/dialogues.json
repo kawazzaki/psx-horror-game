@@ -1,39 +1,87 @@
 {
-  "dialogs": {
-    "ali": [
-      {
-      "speaker": "Other Man",
-      "text": "I killed my brother… and this is the price."
-    },
-    {
-      "speaker": "Player",
-      "text": "W-What? What is this… why… why is he here?!"
-    },
-    {
-      "speaker": "Other Man",
-      "text": "Why was I cursed when he wasn't?"
+    "dialogs": {
+        "ali": [
+            {
+                "speaker": "Other Man",
+                "text": "I killed my brother… and this is the price."
+            },
+            {
+                "speaker": "Player",
+                "text": "W-What? What is this… why… why is he here?!"
+            },
+            {
+                "speaker": "Other Man",
+                "text": "Why was I cursed when he wasn't?"
+            },
+            {
+                "speaker": "Other Man",
+                "text": "Everything happens for a reason… even death has its message."
+            },
+            {
+                "speaker": "Player",
+                "text": "No… this can't be real… you… you killed your brother!"
+            },
+            {
+                "speaker": "Other Man",
+                "text": "Yes… and everyone who enters this place will know fear… and you will feel what I felt."
+            },
+            {
+                "speaker": "Player",
+                "text": "I… I need to get out of here… I don’t want to end up like… him…"
+            },
+            {
+                "speaker": "Other Man",
+                "text": "Escape?! Now you are part of the game… and you won’t leave until you understand true fear."
+            },
+        ],
+        "customer0":[
+            {
+                "speaker": "Player",
+                "text": "...........?"
+            }
+        ],
+        "customer1": [
+            {
+                "speaker": "Customer",
+                "text": "booo!!!"
+            }
+            ,
+            {
+                "speaker": "Customer",
+                "text": "You... what are you doing here? This place is not meant for you."
+            },
+            {
+                "speaker": "Player",
+                "text": "I don’t know how I ended up here... Where am I?"
+            },
+            {
+                "speaker": "Customer",
+                "text": "You are in ?????. Not a place for mortals like you. But... lucky for you, I can help."
+            },
+            {
+                "speaker": "Player",
+                "text": "Help me? Why would you do that?"
+            },
+            {
+                "speaker": "Customer",
+                "text": "Because I pity you. Trapped here among the damned souls... You don’t belong. I know the way out."
+            },
+            {
+                "speaker": "Player",
+                "text": "And why should I trust you?"
+            },
+            {
+                "speaker": "Customer",
+                "text": "Trust? You have no choice. Without me, you’ll wander here forever. With me... you escape. Simple."
+            },
+            {
+                "speaker": "Player",
+                "text": "Something feels wrong about this..."
+            },
+            {
+                "speaker": "Customer",
+                "text": "Hah... Doubts will kill you faster than flames. Follow me, and I’ll take you to my office. From there... freedom is possible."
+            }
+        ]
     }
-    ,
-    {
-      "speaker": "Other Man",
-      "text": "Everything happens for a reason… even death has its message."
-    },
-    {
-      "speaker": "Player",
-      "text": "No… this can't be real… you… you killed your brother!"
-    },
-    {
-      "speaker": "Other Man",
-      "text": "Yes… and everyone who enters this place will know fear… and you will feel what I felt."
-    },
-    {
-      "speaker": "Player",
-      "text": "I… I need to get out of here… I don’t want to end up like… him…"
-    },
-    {
-      "speaker": "Other Man",
-      "text": "Escape?! Now you are part of the game… and you won’t leave until you understand true fear."
-    },
-    ]
-  }
 }

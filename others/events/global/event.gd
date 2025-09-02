@@ -18,9 +18,11 @@ func _ready():
 func check_succesive_event():
 	if (succesive_event == "Disabled"):
 		interact()
+		
 	else:
 		if(EventManager.start_event(index)):
 			interact()
+
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:

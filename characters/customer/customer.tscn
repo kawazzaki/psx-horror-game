@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4uulp8m0gcr6"]
+
+[ext_resource type="Script" uid="uid://dhjug03g82how" path="res://characters/global/character.gd" id="1_4wykn"]
+[ext_resource type="Texture2D" uid="uid://chkoqdsrbbu3i" path="res://characters/customer/gfx/customer.png" id="2_v6hme"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d2gs"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_v6hme")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1d2gs"]
+size = Vector3(1, 4.03412, 0.438721)
+
+[node name="customer" type="StaticBody3D"]
+script = ExtResource("1_4wykn")
+metadata/_custom_type_script = "uid://dhjug03g82how"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50755, 0)
+material_override = SubResource("StandardMaterial3D_1d2gs")
+pixel_size = 0.003
+texture = ExtResource("2_v6hme")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51706, -0.00476074)
+shape = SubResource("BoxShape3D_1d2gs")
