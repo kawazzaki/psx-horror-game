@@ -15,7 +15,7 @@ script = ExtResource("1_3hco0")
 metadata/_custom_type_script = "uid://dhjug03g82how"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78115, 0.00104332)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52555, 0.00104332)
 layers = 1024
 sorting_offset = 1.0
 material_override = SubResource("StandardMaterial3D_8rfdr")
