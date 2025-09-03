@@ -26,4 +26,6 @@
 
 ---
 #8ac09a
-#769e82
+---
+ScreenShots:
+![Demo Screenshot](others/screenshots/Screenshot_1.png)
