@@ -26,4 +26,8 @@
 
 ---
 #8ac09a
-#769e82
+---
+ScreenShots:
+| Image 1 | Image 2 |
+|---------|---------|
+| ![Alt text](others/screenshots/Screenshot_1.png) | ![Alt text](others/screenshots/Screenshot_2.png) |
