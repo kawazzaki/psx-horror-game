@@ -1,10 +1,10 @@
 extends Node
 
 # == References ==
-@onready var player_camera = self.get_tree().root.get_child(
-	self.get_tree().root.get_child_count() - 1
-).get_node("player").get_node("head/fpsCam")
-
+#@onready var player_camera = self.get_tree().root.get_child(
+#	self.get_tree().root.get_child_count() - 1
+#).get_node("player").get_node("head/fpsCam")
+var player_camera
 # == Transition camera (وسيط) ==
 var my_camera : Camera3D
 
@@ -20,8 +20,6 @@ func _ready():
 # time = مدة الانتقال بالثواني
 func change_camera(target_cam : Camera3D, time := 0.5):
 	var tween = get_tree().create_tween()
-
-	# اجعل my_camera يبدأ من player_camera دائماً
 	my_camera.global_position = player_camera.global_position
 	my_camera.global_rotation = player_camera.global_rotation
 	my_camera.current = true

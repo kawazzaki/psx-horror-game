@@ -4,7 +4,7 @@ extends StaticBody3D
 class_name character
 
 
-@onready var player  =  get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player").get_node("head/fpsCam");
+@onready var player  =  get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player");
 
 
 

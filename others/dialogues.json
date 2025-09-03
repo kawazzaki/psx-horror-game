@@ -3,6 +3,10 @@
         "ali": [
             {
                 "speaker": "Other Man",
+                "text": "..............."
+            },
+            {
+                "speaker": "Other Man",
                 "text": "I killed my brother… and this is the price."
             },
             {
@@ -34,18 +38,21 @@
                 "text": "Escape?! Now you are part of the game… and you won’t leave until you understand true fear."
             },
         ],
-        "customer0":[
+        "customer0": [
             {
                 "speaker": "Player",
                 "text": "...........?"
+            },
+            {
+                "speaker": "Player",
+                "text": "wtf!"
             }
         ],
         "customer1": [
             {
                 "speaker": "Customer",
                 "text": "booo!!!"
-            }
-            ,
+            },
             {
                 "speaker": "Customer",
                 "text": "You... what are you doing here? This place is not meant for you."
@@ -81,6 +88,39 @@
             {
                 "speaker": "Customer",
                 "text": "Hah... Doubts will kill you faster than flames. Follow me, and I’ll take you to my office. From there... freedom is possible."
+            }
+        ],
+        "agent13_p1": [
+            {
+                "speaker": "Agent 13",
+                "text": "Ah… you came. I have something very special for you… a medicine. Interested?"
+            },
+            {
+                "speaker": "Player",
+                "text": "Medicine? Yeah… I can pay for it?"
+            },
+            {
+                "speaker": "Agent 13",
+                "text": "Of course… but it’s more than ordinary. It can take you places… unseen, unknown."
+            },
+            {
+                "speaker": "Player",
+                "text": "Places? Hah… I just need to earn some money. That’s all."
+            },
+            {
+                "speaker": "Agent 13",
+                "text": "Exactly. I need someone brave to test it. If you succeed… you could become a billionaire."
+            },
+            {
+                "speaker": "Player",
+                "text": "Billionaire? Hah… if it works, I’m in."
+            }
+           
+        ],
+        "agent13_p2": [
+            {
+                "speaker": "Agent 13",
+                "text": "Good. Take this vial. Drink it… and the test begins. Remember… not everyone comes back unchanged."
             }
         ]
     }

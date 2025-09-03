@@ -7,6 +7,8 @@ class_name Event
 var succesive_event: String = "Enabled"
 @export var index = 0;
 
+
+var first_time = true;
 func _start():
 	pass
 func _ready():
@@ -25,9 +27,12 @@ func check_succesive_event():
 
 
 
+
+
 func _on_body_entered(body: CharacterBody3D) -> void:
-	if body == player:
+	if body == player and first_time == true:
 		check_succesive_event()
+		first_time = false
 		print("Player entered the area!")
 
 func _on_body_exited(body: CharacterBody3D) -> void:

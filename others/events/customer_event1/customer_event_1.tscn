@@ -1,0 +1,303 @@
+[gd_scene load_steps=16 format=3 uid="uid://d0q0cnjjt6goh"]
+
+[ext_resource type="Script" uid="uid://b1l8chdjxq2d2" path="res://others/events/customer_event1/customer_event1.gd" id="1_p5y7n"]
+[ext_resource type="AudioStream" uid="uid://dw21nlhj5pfvg" path="res://sounds/cinematic-hit-159487.mp3" id="2_xjh87"]
+[ext_resource type="PackedScene" uid="uid://c4uulp8m0gcr6" path="res://characters/customer/customer.tscn" id="3_jo65b"]
+[ext_resource type="AudioStream" uid="uid://cik5lhdeipcy2" path="res://sounds/squeaky-jumpscare-2-102254.mp3" id="3_xjh87"]
+[ext_resource type="Shader" uid="uid://5ui12nrmrdiy" path="res://effects/2d shake/shake2d.gdshader" id="4_dmpxp"]
+[ext_resource type="Texture2D" uid="uid://cdxt0ymm66chx" path="res://others/events/customer_event1/imports/jumpscare.png" id="5_jt8k7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1d2gs"]
+size = Vector3(4.66479, 1, 1)
+
+[sub_resource type="Animation" id="Animation_jv588"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("customer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.437557, 0, -2.23978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.100426, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jumpscare:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 31.6537)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p1aj5"]
+resource_name = "event"
+length = 12.0
+step = 0.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00391436, 0.182811, 0.742767),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [1, true],
+"method": &"set_customer_propreties"
+}, {
+"args": [true],
+"method": &"change_cam"
+}, {
+"args": ["customer1"],
+"method": &"start_event_dilaog"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.166227,
+"stream": ExtResource("2_xjh87")
+}],
+"times": PackedFloat32Array(0.587584)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("customer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00147765, 0.605835),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.438, 0, -35.385), Vector3(-0.437557, 0, -2.23978)]
+}
+
+[sub_resource type="Animation" id="Animation_xam2y"]
+resource_name = "event0"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jumpscare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["customer0"],
+"method": &"start_event_dilaog"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_xjh87")
+}],
+"times": PackedFloat32Array(0.566667)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.41, 2.25, 31.654), Vector3(-0.37, 2.255, 1.034)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1d2gs"]
+resource_name = "event1"
+length = 3.5
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("customer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.05673),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.437557, 0, -2.23978), Vector3(-1.97255, 0, 39.6533)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.244968),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.100426, 0, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.41684),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"change_cam"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1d2gs"]
+_data = {
+&"RESET": SubResource("Animation_jv588"),
+&"event": SubResource("Animation_p1aj5"),
+&"event0": SubResource("Animation_xam2y"),
+&"event1": SubResource("Animation_1d2gs")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fla3q"]
+shader = ExtResource("4_dmpxp")
+shader_parameter/hit_effect = 1.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(0.076053, 3.34659e-08, 9.02452e-09, 1)
+shader_parameter/texture_opacity = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjh87"]
+albedo_color = Color(1, 1, 1, 0.745098)
+metallic_specular = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_jo65b"]
+size = Vector2(8, 8)
+
+[node name="customer_event1" type="Area3D"]
+script = ExtResource("1_p5y7n")
+succesive_event = "Disabled"
+metadata/_custom_type_script = "uid://dxfyqxiw2dxkh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.367065, 0, 0)
+shape = SubResource("BoxShape3D_1d2gs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1d2gs")
+}
+
+[node name="customer" parent="." instance=ExtResource("3_jo65b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.437557, 0, -2.23978)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994962, -0.100257, 0, 0.100257, 0.994962, -0.417313, 2.96923, -1.39582)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -40.0
+playback_type = 1
+
+[node name="jumpscare" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.65098)
+self_modulate = Color(1, 1, 1, 0.666667)
+material = SubResource("ShaderMaterial_fla3q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jt8k7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 31.6537)
+material_override = SubResource("StandardMaterial3D_xjh87")
+mesh = SubResource("QuadMesh_jo65b")

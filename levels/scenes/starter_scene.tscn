@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dufl18gtlhpg0"]
+
+[ext_resource type="Script" uid="uid://2dycmjwp3xsi" path="res://levels/scenes/starter_scene.gd" id="1_ipk6h"]
+[ext_resource type="PackedScene" uid="uid://bdfugt4r6hulh" path="res://props/table/3d model/psx_wooden_table.glb" id="1_vcsgx"]
+[ext_resource type="PackedScene" uid="uid://bl5s0osci83vd" path="res://props/medicine/3d model/medicine_pot_lowpolly.glb" id="2_mcart"]
+[ext_resource type="Environment" uid="uid://ddqc6ffxh0lpf" path="res://others/envi.tres" id="3_wtbih"]
+[ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="3_xvsjm"]
+[ext_resource type="PackedScene" uid="uid://c5na2l1ohh3o7" path="res://ui/dialog/dialog.tscn" id="6_ouos6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtbih"]
+shader = ExtResource("3_xvsjm")
+shader_parameter/exposure = 1.0
+shader_parameter/contrast = 1.05
+shader_parameter/saturation = 0.9
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_factor = 3.0
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 16.0
+shader_parameter/dither_strength = 0.35
+shader_parameter/chrom_aberration = 0.07
+shader_parameter/vignette_strength = 1.0
+shader_parameter/grain_strength = 0.2
+shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
+shader_parameter/tint_strength = 0.15
+shader_parameter/viewport_size_override = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_ouos6"]
+resource_name = "cutscene"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["agent13_p1"],
+"method": &"_start_dialog"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2m3ma"]
+resource_name = "cutscene1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.349007, 1.05196, -0.293545), Vector3(-0.349007, 1.05196, 0.100544)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["agent13_p2"],
+"method": &"_start_dialog"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_doe68"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.349007, 1.05196, -0.293545)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2m3ma"]
+_data = {
+&"RESET": SubResource("Animation_doe68"),
+&"cutscene": SubResource("Animation_ouos6"),
+&"cutscene1": SubResource("Animation_2m3ma")
+}
+
+[node name="starter_scene" type="Node3D"]
+script = ExtResource("1_ipk6h")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_vcsgx")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38432, 1.12107)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("2_mcart")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.349007, 1.05196, -0.293545)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_wtbih")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wtbih")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2m3ma")
+}
+autoplay = "cutscene"
+
+[node name="dialog" parent="." instance=ExtResource("6_ouos6")]

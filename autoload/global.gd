@@ -5,8 +5,8 @@ extends Node
 
 var items_in_inventory : Array[String] = ["","",""];
 
-@onready var head= self.get_tree().root.get_child( self.get_tree().root.get_child_count() - 1).get_node("player").get_node("head/fpsCam")
-
+#@onready var head= self.get_tree().root.get_child( self.get_tree().root.get_child_count() - 1).get_node("player").get_node("head/fpsCam")
+var head;
 
 
 
@@ -78,9 +78,10 @@ func show_paper(paper_id: String):
 
 
 #information sub-title
-@onready var sub_title = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("sub-title")
-@onready var aim_collider  = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player").aim_collider
-
+#@onready var sub_title = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("sub-title")
+#@onready var aim_collider  = self.get_tree().root.get_child(self.get_tree().root.get_child_count() - 1).get_node("player").aim_collider
+var aim_collider;
+var sub_title;
 
 #func subTitle():
 #	if(!aim_collider):

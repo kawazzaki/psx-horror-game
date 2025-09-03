@@ -1,0 +1,350 @@
+[gd_scene load_steps=41 format=3 uid="uid://cb2y23i0w8usb"]
+
+[ext_resource type="Script" uid="uid://5v0cbmxg7hsj" path="res://autoload/global.gd" id="1_xcx8p"]
+[ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="2_jvaux"]
+[ext_resource type="Script" uid="uid://ddk5887qo7erc" path="res://effects/crt/cfr.gd" id="3_30ukt"]
+[ext_resource type="PackedScene" uid="uid://bci720gpllgkg" path="res://ui/pc/pc_ui.tscn" id="4_iyhjv"]
+[ext_resource type="PackedScene" uid="uid://cy4f45hhxpus8" path="res://ui/inventory/ui_inventory.tscn" id="5_tpom2"]
+[ext_resource type="PackedScene" uid="uid://135unmc21u4u" path="res://ui/read/read.tscn" id="6_hgfax"]
+[ext_resource type="PackedScene" uid="uid://bj2ifeiijhv7" path="res://player/scenes/player.tscn" id="7_pfx1b"]
+[ext_resource type="PackedScene" uid="uid://bkb21owl1u40i" path="res://envirenement/lobby/model/lobby.glb" id="8_0h5ad"]
+[ext_resource type="PackedScene" uid="uid://dyt6ucn8t4fcw" path="res://props/storages/desk/desk.tscn" id="9_5i0gs"]
+[ext_resource type="PackedScene" uid="uid://4qflxap6dajh" path="res://props/storages/storage1/storage_1.tscn" id="10_h8uu0"]
+[ext_resource type="PackedScene" uid="uid://5lhmhfepayks" path="res://props/machine/machine.tscn" id="11_wlci2"]
+[ext_resource type="PackedScene" uid="uid://dyrb2k6vibjfp" path="res://props/nuclear_door/nuclear_door.tscn" id="12_qvj7f"]
+[ext_resource type="PackedScene" uid="uid://beogl7q0gdiq3" path="res://props/ceiling fan/ceiling_fan.tscn" id="13_qagfv"]
+[ext_resource type="PackedScene" uid="uid://bpn0mudnll430" path="res://props/ventilation passage/ventilation_passage.tscn" id="14_qsl4k"]
+[ext_resource type="PackedScene" uid="uid://bvmawe4sda4q" path="res://props/radio/radio.tscn" id="15_pmafc"]
+[ext_resource type="PackedScene" uid="uid://dnxfh6poxvhdc" path="res://items/paper/paper.tscn" id="16_qrrf6"]
+[ext_resource type="PackedScene" uid="uid://cb8pfagmgc7p6" path="res://envirenement/black_room/3d model/black_room.glb" id="17_k2b48"]
+[ext_resource type="PackedScene" uid="uid://bsf1hpfcc0egi" path="res://props/doors/door.tscn" id="18_d8wub"]
+[ext_resource type="PackedScene" uid="uid://bxtj7u6dwqj0f" path="res://items/key/key.tscn" id="19_igjyp"]
+[ext_resource type="PackedScene" uid="uid://ca00dc7c3o7pe" path="res://others/events/event_R4/r_4_event.tscn" id="20_drqmq"]
+[ext_resource type="PackedScene" uid="uid://cumng7xvw0f1s" path="res://characters/ali/ali.tscn" id="21_rtoeg"]
+[ext_resource type="PackedScene" uid="uid://c5na2l1ohh3o7" path="res://ui/dialog/dialog.tscn" id="22_vbqqt"]
+[ext_resource type="PackedScene" uid="uid://bkqvfbnuld8n5" path="res://others/events/dialog_event/dialog_event.tscn" id="23_yl0bo"]
+[ext_resource type="PackedScene" uid="uid://cy2dc5xdw3f8j" path="res://others/events/thunder_event/thunder_event.tscn" id="24_vk77g"]
+[ext_resource type="PackedScene" uid="uid://d0q0cnjjt6goh" path="res://others/events/customer_event1/customer_event_1.tscn" id="25_ypm7q"]
+[ext_resource type="Environment" uid="uid://ddqc6ffxh0lpf" path="res://others/envi.tres" id="26_lx5w7"]
+[ext_resource type="PackedScene" uid="uid://d0kc3o4rnyoxy" path="res://props/elevator/model/elevator.glb" id="27_bnu1a"]
+[ext_resource type="AudioStream" uid="uid://wsu8lqtjqjkr" path="res://sounds/scary-ambient-05-17666.mp3" id="28_o08tk"]
+[ext_resource type="Script" uid="uid://dw04dt6ynb65g" path="res://others/events/wake_up_event/wake_up_event.gd" id="29_jvaux"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oeqrt"]
+shader = ExtResource("2_jvaux")
+shader_parameter/exposure = 2.0
+shader_parameter/contrast = 1.05
+shader_parameter/saturation = 1.571
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_factor = 1.5
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 16.0
+shader_parameter/dither_strength = 0.35
+shader_parameter/chrom_aberration = 0.07
+shader_parameter/vignette_strength = 1.0
+shader_parameter/grain_strength = 0.2
+shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
+shader_parameter/tint_strength = 0.15
+shader_parameter/viewport_size_override = Vector2(0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nk31j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy1p0"]
+size = Vector3(8.69055, 1, 10.5049)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvfii"]
+size = Vector3(1, 1, 3.0813)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mosls"]
+size = Vector3(4.96826, 3.39063, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d2gs"]
+cull_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1d2gs"]
+size = Vector2(150, 150)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30ukt"]
+
+[sub_resource type="Animation" id="Animation_jvaux"]
+resource_name = "event"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3.46667, 5.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.78593, 1.41053, 2.66956), Vector3(-2.027, 1.411, 0.381), Vector3(-2.02931, 1.411, 0.387978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.401286, 0, 0), Vector3(0.218166, -1.5708, 0.0139626)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 5.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"change_camera"
+}, {
+"args": [false],
+"method": &"change_camera"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_30ukt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.78593, 1.41053, 2.66956)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.401286, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iyhjv"]
+_data = {
+&"RESET": SubResource("Animation_30ukt"),
+&"event": SubResource("Animation_jvaux")
+}
+
+[node name="starter_house" type="Node3D"]
+script = ExtResource("1_xcx8p")
+
+[node name="cfr" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oeqrt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_30ukt")
+
+[node name="pc_ui" parent="." node_paths=PackedStringArray("machine") instance=ExtResource("4_iyhjv")]
+machine = NodePath("../props/machine")
+
+[node name="ui_inventory" parent="." instance=ExtResource("5_tpom2")]
+
+[node name="read" parent="." instance=ExtResource("6_hgfax")]
+visible = false
+
+[node name="player" parent="." instance=ExtResource("7_pfx1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93062, -49.1893, -1.58061)
+visible = false
+
+[node name="collisions" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181082, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions"]
+shape = SubResource("WorldBoundaryShape3D_nk31j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4233, 1.82425, 1.98407)
+shape = SubResource("BoxShape3D_fy1p0")
+debug_color = Color(0.297961, 0.176172, 0.392508, 0.42)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8908, 0.535874, 12.0511)
+shape = SubResource("BoxShape3D_qvfii")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7291, 1.19531, 99.274)
+shape = SubResource("BoxShape3D_mosls")
+
+[node name="lobby" parent="." instance=ExtResource("8_0h5ad")]
+
+[node name="props" type="Node3D" parent="."]
+
+[node name="desk" parent="props" instance=ExtResource("9_5i0gs")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.439739, 0.815141, -13.5766)
+items_in_drawers = Array[String](["screw_remover", "paper_1", "", "rhombus", "", "", ""])
+
+[node name="storage1" parent="props" instance=ExtResource("10_h8uu0")]
+transform = Transform3D(-0.689365, 0, 0.121554, 0, 0.7, 0, -0.121554, 0, -0.689365, -2.83403, 0.715803, 0.832203)
+
+[node name="machine" parent="props" node_paths=PackedStringArray("pc_ui", "blast_door") instance=ExtResource("11_wlci2")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.58563, 0.621486, -14.0906)
+pc_ui = NodePath("../../pc_ui")
+blast_door = NodePath("../nuclear_door")
+
+[node name="nuclear_door" parent="props" instance=ExtResource("12_qvj7f")]
+transform = Transform3D(-5.11886e-08, 0, 0.390761, 0, 0.812034, 0, -1.17106, 0, -1.70807e-08, 8.89664, 1.54975, -5.63747)
+
+[node name="ceiling fan" parent="props" instance=ExtResource("13_qagfv")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 3.30365, -5.84247)
+
+[node name="ventilation passage" parent="props" instance=ExtResource("14_qsl4k")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 31.61, 0.774752, -3.26045)
+
+[node name="radio" parent="props" instance=ExtResource("15_pmafc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.78806, -9.43324)
+
+[node name="papers" type="Node3D" parent="."]
+
+[node name="paper" parent="papers" instance=ExtResource("16_qrrf6")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5.57262, 2.38742, 2.62405)
+object_name = "password_indicator"
+
+[node name="paper2" parent="papers" instance=ExtResource("16_qrrf6")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 8.18954, 1.95955, 0.287527)
+object_name = "triangle"
+
+[node name="paper3" parent="papers" instance=ExtResource("16_qrrf6")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.27876, 2.4345, -6.23818)
+object_name = "circle"
+
+[node name="black_room" parent="." instance=ExtResource("17_k2b48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+
+[node name="door" parent="." instance=ExtResource("18_d8wub")]
+transform = Transform3D(-4.37114e-08, 0, -1.25, 0, 0.75, 0, 1, 0, -5.46392e-08, 41.9221, 1.44939, 21.1462)
+islocked = true
+variation_angle = 90.0
+
+[node name="key" parent="." node_paths=PackedStringArray("my_doors") instance=ExtResource("19_igjyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8888, 1.73246, 11.7231)
+my_doors = [NodePath("../door")]
+object_name = "key1"
+
+[node name="r4_event" parent="." instance=ExtResource("20_drqmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71327, 0, -10.8956)
+
+[node name="ali" parent="." instance=ExtResource("21_rtoeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9363, 0, 17.3334)
+
+[node name="dialog" parent="." instance=ExtResource("22_vbqqt")]
+visible = false
+
+[node name="dialog_event" parent="." node_paths=PackedStringArray("event_camera") instance=ExtResource("23_yl0bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8302, 0.181082, 14.8792)
+dialog_name = "ali"
+event_camera = NodePath("../Camera3D")
+succesive_event = "Disabled"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.9399, 2.53233, 15.6262)
+
+[node name="thunder_event" parent="." instance=ExtResource("24_vk77g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5378, 0, -5.55409)
+
+[node name="customer_event1" parent="." instance=ExtResource("25_ypm7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0712, 0, 58.1348)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("26_lx5w7")
+
+[node name="elevator" parent="." instance=ExtResource("27_bnu1a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.6374, 1.82803, 98.6376)
+
+[node name="world" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
+environment = ExtResource("26_lx5w7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="world"]
+stream = ExtResource("28_o08tk")
+autoplay = true
+mix_target = 2
+bus = &"player"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.70375, -5.91795)
+light_color = Color(1, 1, 0.196078, 1)
+light_energy = 5.0
+spot_range = 9.727
+spot_angle = 81.0
+spot_angle_attenuation = 12.5533
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="world"]
+transform = Transform3D(0.968065, 0.221951, -0.116571, 0, 0.464981, 0.885321, 0.250701, -0.857048, 0.450132, 24.7661, 3.70375, -5.91795)
+light_color = Color(1, 1, 0.196078, 1)
+light_energy = 5.0
+spot_range = 9.727
+spot_angle = 55.62
+spot_angle_attenuation = 12.5533
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 23.964, 3.70375, 13.1329)
+light_color = Color(1, 1, 0.196078, 1)
+light_energy = 5.0
+spot_range = 9.727
+spot_angle = 55.62
+spot_angle_attenuation = 12.5533
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, -0.867418, 0.49758, 0, -0.49758, -0.867418, 41.2237, 4.3437, 15.36)
+light_color = Color(1, 0, 0.196078, 1)
+light_energy = 5.0
+spot_range = 9.727
+spot_angle = 55.62
+spot_angle_attenuation = 12.5533
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, -0.784701, 0.619875, 0, -0.619875, -0.784701, 40.7384, 3.70375, 95.895)
+light_color = Color(1, 1, 0.196078, 1)
+light_energy = 10.0
+spot_range = 9.727
+spot_angle = 55.62
+spot_angle_attenuation = 12.5533
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88471, 40.2645)
+material_override = SubResource("StandardMaterial3D_1d2gs")
+mesh = SubResource("PlaneMesh_1d2gs")
+
+[node name="wake_up_event" type="Area3D" parent="." node_paths=PackedStringArray("cutscene_cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85711, 0, -1.58207)
+script = ExtResource("29_jvaux")
+cutscene_cam = NodePath("Camera3D")
+succesive_event = "Disabled"
+metadata/_custom_type_script = "uid://dxfyqxiw2dxkh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wake_up_event"]
+shape = SubResource("BoxShape3D_30ukt")
+
+[node name="Camera3D" type="Camera3D" parent="wake_up_event"]
+transform = Transform3D(1, 0, 0, 0, 0.92056, -0.390603, 0, 0.390603, 0.92056, -2.78593, 1.41053, 2.66956)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="wake_up_event"]
+libraries = {
+&"": SubResource("AnimationLibrary_iyhjv")
+}

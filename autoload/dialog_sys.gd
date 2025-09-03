@@ -2,37 +2,45 @@ extends Node
 
 signal dialogue_finished
 
-# == Nodes ==
-@onready var dialog_ui = get_tree().root.get_child(get_tree().root.get_child_count() - 1).get_node("dialog")
-@onready var dialog_label = dialog_ui.get_node("Label1")
-@onready var speaker_label = dialog_ui.get_node("Label0")
-@onready var type_timer = dialog_ui.get_node("Timer")
+# === Nodes (set dynamically) ===
+var dialog_ui: Control = null
+var dialog_label: Label = null
+var speaker_label: Label = null
+var type_timer: Timer = null
 
-# == Dialogue data ==
+# === Dialogue data ===
 var dialogues = {}
 var current_dialogue = []
 var dialogue_index = 0
+var current_dialogue_id = ""
 
-# == Typewriter effect ==
+# === Typewriter effect ===
 var full_text = ""
 var char_index = 0
 var is_typing = false
 
-func _ready():
+
+# === Registration ===
+func register_dialog_ui(ui_node: Control):
+	dialog_ui = ui_node
+	dialog_label = dialog_ui.get_node("Label1")
+	speaker_label = dialog_ui.get_node("Label0")
+	type_timer = dialog_ui.get_node("Timer")
 	if type_timer:
 		type_timer.timeout.connect(_on_TypeTimer_timeout)
-	load_dialogues()
-	dialog_ui.visible = false   # واجهة الحوار مخفية عند البداية
+	dialog_ui.visible = false
 
+
+# === Load dialogues ===
 func load_dialogues():
 	var file = FileAccess.open("res://others/dialogues.json", FileAccess.READ)
 	if file:
 		var content = file.get_as_text()
-		dialogues = JSON.parse_string(content)   # Godot 4
+		dialogues = JSON.parse_string(content)
 		file.close()
-		
-var current_dialogue_id = "" 
 
+
+# === Start dialogue ===
 func start_dialogue(dialogue_id: String):
 	if dialogues.has("dialogs") and dialogues["dialogs"].has(dialogue_id):
 		current_dialogue = dialogues["dialogs"][dialogue_id]
@@ -44,6 +52,7 @@ func start_dialogue(dialogue_id: String):
 	else:
 		print("Dialogue ID not found:", dialogue_id)
 
+
 func show_line():
 	if dialogue_index < current_dialogue.size():
 		var line = current_dialogue[dialogue_index]
@@ -52,21 +61,21 @@ func show_line():
 		char_index = 0
 		dialog_label.text = ""
 		is_typing = true
-		Global.player_can_move = false   # اللاعب يتوقف أثناء الحوار
+		Global.player_can_move = false
 		type_timer.start()
 	else:
 		end_dialogue()
 
+
 func next_line():
 	if is_typing:
-		# إذا الكتابة لم تنتهي → أكمل النص مباشرة
 		dialog_label.text = full_text
 		is_typing = false
 		type_timer.stop()
 	else:
-		# انتقل للسطر التالي
 		dialogue_index += 1
 		show_line()
+
 
 func _on_TypeTimer_timeout():
 	if char_index < full_text.length():
@@ -75,8 +84,8 @@ func _on_TypeTimer_timeout():
 		dialog_ui.get_node("AudioStreamPlayer").play()
 	else:
 		is_typing = false
-		#Global.player_can_move = true
 		type_timer.stop()
+
 
 func end_dialogue():
 	Global.toggle_mouse()
@@ -85,8 +94,6 @@ func end_dialogue():
 	speaker_label.text = ""
 	current_dialogue = []
 	dialogue_index = 0
-	#Camera.change_camera(null,0.25)
-	#Global.player_can_move = true
-	print("Dialogue finished!") 
-	emit_signal("dialogue_finished", current_dialogue_id)  # ← نرسل ID الحوار
-	current_dialogue_id = ""   # نرجعه فاضي
+	print("Dialogue finished!")
+	emit_signal("dialogue_finished", current_dialogue_id)
+	current_dialogue_id = ""

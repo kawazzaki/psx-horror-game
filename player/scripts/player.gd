@@ -34,6 +34,10 @@ var aim_collider ;
 var slot_index ;
 
 func _ready():
+	Global.head = self.get_node("head/fpsCam")
+	Global.aim_collider = aim_collider
+	self.get_node("head/fpsCam").current = true
+	Camera.player_camera = self.get_node("head/fpsCam")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):

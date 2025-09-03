@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4uulp8m0gcr6"]
+[gd_scene load_steps=9 format=3 uid="uid://c4uulp8m0gcr6"]
 
 [ext_resource type="Script" uid="uid://dhjug03g82how" path="res://characters/global/character.gd" id="1_4wykn"]
 [ext_resource type="Texture2D" uid="uid://chkoqdsrbbu3i" path="res://characters/customer/gfx/customer.png" id="2_v6hme"]
@@ -10,6 +10,61 @@ albedo_texture = ExtResource("2_v6hme")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1d2gs"]
 size = Vector3(1, 4.03412, 0.438721)
+
+[sub_resource type="Animation" id="Animation_4wykn"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v6hme"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xa0h2"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.97, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xa0h2"]
+_data = {
+&"RESET": SubResource("Animation_v6hme"),
+&"idle": SubResource("Animation_4wykn"),
+&"run": SubResource("Animation_xa0h2")
+}
 
 [node name="customer" type="StaticBody3D"]
 script = ExtResource("1_4wykn")
@@ -24,3 +79,9 @@ texture = ExtResource("2_v6hme")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51706, -0.00476074)
 shape = SubResource("BoxShape3D_1d2gs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xa0h2")
+}
+autoplay = "idle"
