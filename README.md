@@ -28,4 +28,6 @@
 #8ac09a
 ---
 ScreenShots:
-![Demo Screenshot](others/screenshots/Screenshot_1.png)
+| Image 1 | Image 2 |
+|---------|---------|
+| ![Alt text](others/screenshots/Screenshot_1.png) | ![Alt text](others/screenshots/Screenshot_2.png) |
