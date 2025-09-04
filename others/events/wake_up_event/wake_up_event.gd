@@ -14,3 +14,6 @@ func change_camera(cam : bool):
 	else:
 		Camera.change_camera(null)
 	pass
+
+func _fade_out():
+	Fade.fade_out(2)

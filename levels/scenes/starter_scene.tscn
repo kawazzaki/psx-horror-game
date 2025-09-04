@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dufl18gtlhpg0"]
+[gd_scene load_steps=16 format=3 uid="uid://dufl18gtlhpg0"]
 
 [ext_resource type="Script" uid="uid://2dycmjwp3xsi" path="res://levels/scenes/starter_scene.gd" id="1_ipk6h"]
 [ext_resource type="PackedScene" uid="uid://bdfugt4r6hulh" path="res://props/table/3d model/psx_wooden_table.glb" id="1_vcsgx"]
 [ext_resource type="PackedScene" uid="uid://bl5s0osci83vd" path="res://props/medicine/3d model/medicine_pot_lowpolly.glb" id="2_mcart"]
 [ext_resource type="Environment" uid="uid://ddqc6ffxh0lpf" path="res://others/envi.tres" id="3_wtbih"]
 [ext_resource type="Shader" uid="uid://dmqr68c7bd4hq" path="res://effects/crt/crt.gdshader" id="3_xvsjm"]
+[ext_resource type="AudioStream" uid="uid://cc8v3rac62jx8" path="res://sounds/push-100769.mp3" id="6_2m3ma"]
+[ext_resource type="AudioStream" uid="uid://bgvdmawk32r4k" path="res://sounds/phone-ringtone-telephone-324474.mp3" id="6_doe68"]
 [ext_resource type="PackedScene" uid="uid://c5na2l1ohh3o7" path="res://ui/dialog/dialog.tscn" id="6_ouos6"]
+[ext_resource type="AudioStream" uid="uid://ctac3s78usu0q" path="res://sounds/office-ambience-6322.mp3" id="9_csvoj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtbih"]
 shader = ExtResource("3_xvsjm")
@@ -41,6 +44,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ouos6"]
 resource_name = "cutscene"
+length = 10.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,17 +52,35 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_fade_out"
+}, {
 "args": ["agent13_p1"],
 "method": &"_start_dialog"
 }]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 15.688,
+"start_offset": 0.0,
+"stream": ExtResource("6_doe68")
+}],
+"times": PackedFloat32Array(1.16667)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2m3ma"]
 resource_name = "cutscene1"
-length = 3.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +88,7 @@ tracks/0/path = NodePath("Sketchfab_Scene2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.43333),
+"times": PackedFloat32Array(0, 0.966667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.349007, 1.05196, -0.293545), Vector3(-0.349007, 1.05196, 0.100544)]
@@ -78,11 +100,47 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.2),
+"times": PackedFloat32Array(2.16667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["agent13_p2"],
 "method": &"_start_dialog"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_2m3ma")
+}],
+"times": PackedFloat32Array(0.0666667)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_csvoj"]
+resource_name = "cutscene2"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_fade_in"
+}, {
+"args": [],
+"method": &"change_scene"
 }]
 }
 
@@ -90,7 +148,8 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_doe68"),
 &"cutscene": SubResource("Animation_ouos6"),
-&"cutscene1": SubResource("Animation_2m3ma")
+&"cutscene1": SubResource("Animation_2m3ma"),
+&"cutscene2": SubResource("Animation_csvoj")
 }
 
 [node name="starter_scene" type="Node3D"]
@@ -122,3 +181,10 @@ libraries = {
 autoplay = "cutscene"
 
 [node name="dialog" parent="." instance=ExtResource("6_ouos6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_csvoj")
+volume_db = -20.0
+autoplay = true
